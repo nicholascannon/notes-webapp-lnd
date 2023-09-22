@@ -7,6 +7,8 @@ type Note {
 }
 
 type Query {
+    note(id: ID!): Note
+    # TODO: could add some pagination parameters here
     notes: [Note]!
 }
 

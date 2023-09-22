@@ -49,7 +49,13 @@ export type Note = {
 
 export type Query = {
   __typename?: 'Query';
+  note?: Maybe<Note>;
   notes: Array<Maybe<Note>>;
+};
+
+
+export type QueryNoteArgs = {
+  id: Scalars['ID']['input'];
 };
 
 
@@ -161,6 +167,7 @@ export type NoteResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  note?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<QueryNoteArgs, 'id'>>;
   notes?: Resolver<Array<Maybe<ResolversTypes['Note']>>, ParentType, ContextType>;
 };
 

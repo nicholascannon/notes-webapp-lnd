@@ -9,6 +9,7 @@ const NOTES = new Map<string, Note>();
 
 const resolvers: Resolvers = {
     Query: {
+        note: (_, { id }) => NOTES.get(id) || null,
         notes: () => Array.from(NOTES.values()),
     },
     Mutation: {
