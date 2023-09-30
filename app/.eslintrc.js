@@ -12,4 +12,18 @@ module.exports = {
         browser: true,
         node: true,
     },
+    ignorePatterns: ['node_modules/**', 'dist'],
+    overrides: [
+        {
+            files: '*.js',
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off',
+            },
+        },
+    ],
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
 };
