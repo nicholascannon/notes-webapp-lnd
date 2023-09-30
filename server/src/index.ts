@@ -4,10 +4,12 @@ import { join } from 'path';
 import { randomUUID } from 'crypto';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { Note, Resolvers } from './__generated__/resolvers-types';
+import { dateScalar } from './scalars/date';
 
 const NOTES = new Map<string, Note>();
 
 const resolvers: Resolvers = {
+    Date: dateScalar,
     Query: {
         note: (_, { id }) => NOTES.get(id) || null,
         notes: () => Array.from(NOTES.values()),
