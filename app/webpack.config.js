@@ -22,7 +22,7 @@ module.exports = {
     },
     devtool: DEV ? 'source-map' : undefined,
     optimization: {
-        minimize: DEV === false,
+        minimize: !DEV,
     },
     module: {
         rules: [
