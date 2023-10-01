@@ -19,6 +19,7 @@ module.exports = {
         static: path.resolve(__dirname, 'dist'),
         port: 3000,
         watchFiles: ['./src/*'],
+        hot: true,
     },
     devtool: DEV ? 'source-map' : undefined,
     optimization: {
