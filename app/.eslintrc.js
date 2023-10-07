@@ -4,10 +4,18 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier',
     ],
+    rules: {
+        // https://emotion.sh/docs/eslint-plugin-react
+        'react/no-unknown-property': ['error', { ignore: ['css'] }],
+        // https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+        'react/jsx-uses-react': 'off',
+        'react/react-in-jsx-scope': 'off',
+    },
     env: {
         browser: true,
         node: true,
