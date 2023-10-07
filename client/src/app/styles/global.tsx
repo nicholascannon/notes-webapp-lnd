@@ -10,10 +10,15 @@ export const GlobalStyles = () => (
                 margin: 0,
             },
             body: {
+                width: '100vw',
+                height: '100vh',
                 lineHeight: 1.5,
                 WebkitFontSmoothing: 'antialiased',
                 color: theme.colors.foreground,
                 backgroundColor: theme.colors.background,
+            },
+            '#root': {
+                height: '100%',
             },
             'img, picture, video, canvas, svg': {
                 display: 'block',
