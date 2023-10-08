@@ -41,6 +41,14 @@ module.exports = {
             'warn',
             { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
         ],
+
+        // Don't allow pages to share non exported (top level dir exports)
+        'no-restricted-imports': [
+            'error',
+            {
+                patterns: ['@/pages/*/*', './pages/*/*'],
+            },
+        ],
     },
     overrides: [
         {
