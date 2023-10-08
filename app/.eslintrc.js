@@ -42,6 +42,17 @@ module.exports = {
             },
         ],
         'import/no-default-export': 'error',
+
+        // Allow variables prefixed with underscore to be unused
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+                caughtErrorsIgnorePattern: '^_',
+            },
+        ],
     },
     overrides: [
         {
