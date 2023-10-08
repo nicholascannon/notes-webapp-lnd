@@ -41,6 +41,7 @@ module.exports = {
                 groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
             },
         ],
+        'import/no-default-export': 'error',
     },
     overrides: [
         {
