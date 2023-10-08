@@ -11,17 +11,7 @@ module.exports = {
         'prettier',
     ],
     parser: '@typescript-eslint/parser',
-    env: { browser: true, node: true },
-    ignorePatterns: ['node_modules/**', 'dist'],
-    settings: {
-        react: {
-            version: 'detect',
-        },
-        'import/resolver': {
-            typescript: true,
-            node: true,
-        },
-    },
+    plugins: ['unused-imports'],
     rules: {
         // https://emotion.sh/docs/eslint-plugin-react
         'react/no-unknown-property': ['error', { ignore: ['css'] }],
@@ -45,13 +35,11 @@ module.exports = {
 
         // Allow variables prefixed with underscore to be unused
         'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': [
+        '@typescript-eslint/no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
             'warn',
-            {
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_',
-                caughtErrorsIgnorePattern: '^_',
-            },
+            { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
         ],
     },
     overrides: [
@@ -68,4 +56,18 @@ module.exports = {
             rules: {},
         },
     ],
+    ignorePatterns: ['node_modules/**', 'dist'],
+    settings: {
+        react: {
+            version: 'detect',
+        },
+        'import/resolver': {
+            typescript: true,
+            node: true,
+        },
+    },
+    env: {
+        browser: true,
+        node: true,
+    },
 };
