@@ -7,6 +7,8 @@ module.exports = {
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
         'prettier',
     ],
     rules: {
@@ -15,6 +17,17 @@ module.exports = {
         // https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
+
+        'import/order': [
+            'error',
+            {
+                alphabetize: {
+                    order: 'asc',
+                },
+                'newlines-between': 'always',
+                groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+            },
+        ],
     },
     env: {
         browser: true,
@@ -32,6 +45,10 @@ module.exports = {
     settings: {
         react: {
             version: 'detect',
+        },
+        'import/resolver': {
+            typescript: true,
+            node: true,
         },
     },
 };

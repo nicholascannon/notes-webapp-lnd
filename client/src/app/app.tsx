@@ -1,9 +1,10 @@
-import React from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { THEME } from './styles/theme';
-import { GlobalStyles } from './styles/global';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import { NotesPage } from './pages/NotesPage/NotesPage';
+import { GlobalStyles } from './styles/global';
+import { THEME } from './styles/theme';
 
 export const App = () => {
     return (
