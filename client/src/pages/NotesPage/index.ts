@@ -1,3 +1,1 @@
-import { NotesPage } from './NotesPage';
-
-export { NotesPage };
+export { NotesPage } from './NotesPage';
