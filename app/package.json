@@ -5,7 +5,8 @@
         "start": "NODE_ENV=development webpack serve --open --progress",
         "build": "NODE_ENV=production tsc && npm run lint && webpack --progress",
         "lint": "eslint .",
-        "lint:fix": "npm run lint -- --fix"
+        "lint:fix": "npm run lint -- --fix",
+        "prepare": "cd .. && husky install client/.husky"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
@@ -34,6 +35,7 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-unused-imports": "^3.0.0",
         "html-webpack-plugin": "^5.5.3",
+        "husky": "^8.0.3",
         "prettier": "^3.0.3",
         "typescript": "^5.2.2",
         "webpack": "^5.88.2",
