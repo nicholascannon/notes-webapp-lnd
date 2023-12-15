@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { NotesPage } from './pages/NotesPage';
+import { NotesPage } from './features/NotesPage';
 import { GlobalStyles } from './styles/global';
 import { THEME } from './styles/theme';
 

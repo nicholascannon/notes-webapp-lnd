@@ -42,11 +42,11 @@ module.exports = {
             { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
         ],
 
-        // Don't allow pages to share non exported (top level dir exports)
+        // Enforce code API usage instead of sharing code
         'no-restricted-imports': [
             'error',
             {
-                patterns: ['@/pages/*/*', './pages/*/*', '*/components/*/*'],
+                patterns: ['@/features/*/*', './features/*/*', '*/components/*/*'],
             },
         ],
     },
