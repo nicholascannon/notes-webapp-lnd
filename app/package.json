@@ -5,8 +5,7 @@
         "start": "NODE_ENV=development webpack serve --open --progress",
         "build": "NODE_ENV=production tsc && npm run lint && webpack --progress",
         "lint": "eslint .",
-        "lint:fix": "npm run lint -- --fix",
-        "prepare": "cd .. && husky install client/.husky"
+        "lint:fix": "npm run lint -- --fix"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
