@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { NotesPage } from './features/NotesPage';
 import { GlobalStyles } from './styles/global';
 import { THEME } from './styles/theme';
 
@@ -12,7 +11,7 @@ export const App = () => {
 
             <BrowserRouter>
                 <Routes>
-                    <Route path="/*" element={<NotesPage />} />
+                    <Route path="/*" element={<h1>Hello, world</h1>} />
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>
