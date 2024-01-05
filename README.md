@@ -1,12 +1,7 @@
 # Notes Webapp LND
 
-A simple CRUD note taking application.
+A very simple notes application for me to test out UI technologies.
 
-## What is this??
+## Wireframe
 
-A small toy project for me to test out new technologies.
-**See branches for implementations**.
-
-## The App
-
-![app diagram](./docs/app.png)
+![Application wireframe](./docs/wireframe.png)
