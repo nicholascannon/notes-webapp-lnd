@@ -15,7 +15,7 @@ module.exports = {
         clean: true,
     },
     resolve: {
-        extensions: ['.js', '.ts', '.jsx', '.tsx'],
+        extensions: ['.ts', '.tsx'],
     },
     devServer: {
         static: buildDir,
@@ -30,7 +30,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|ts|jsx|tsx)$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },
