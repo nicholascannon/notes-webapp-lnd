@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-export const THEME: Theme = {
+export const theme: Theme = {
     colors: {
         foreground: '#fff',
         background: '#000',
