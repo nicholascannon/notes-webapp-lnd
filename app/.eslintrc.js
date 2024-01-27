@@ -27,7 +27,7 @@ module.exports = {
                 alphabetize: {
                     order: 'asc',
                 },
-                'newlines-between': 'always',
+                'newlines-between': 'never',
                 groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
             },
         ],
