@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const buildDir = path.resolve(__dirname, 'dist');
@@ -16,6 +17,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx'],
+        plugins: [new TsconfigPathsPlugin()],
     },
     devServer: {
         static: buildDir,
