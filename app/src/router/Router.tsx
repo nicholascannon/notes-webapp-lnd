@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 export const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route
-                    path="/*"
+                    path="/"
                     element={
                         <motion.h1
                             initial={{ opacity: 0.01, y: 50 }}
@@ -17,6 +17,7 @@ export const Router = () => {
                         </motion.h1>
                     }
                 />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
     );

@@ -23,6 +23,7 @@ module.exports = {
         port: 3000,
         watchFiles: ['./src/*'],
         hot: true,
+        historyApiFallback: true,
     },
     devtool: isDev ? 'source-map' : undefined,
     optimization: {
