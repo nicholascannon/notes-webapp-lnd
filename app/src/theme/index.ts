@@ -1,2 +1,1 @@
-export { CSSReset } from './reset';
-export { theme } from './theme';
+export { ThemeProvider } from './ThemeProvider';

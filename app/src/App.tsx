@@ -1,13 +1,10 @@
-import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { CSSReset, theme } from './theme';
+import { ThemeProvider } from '@/theme';
 
 export const App = () => {
     return (
-        <ThemeProvider theme={theme}>
-            <CSSReset />
-
+        <ThemeProvider>
             <BrowserRouter>
                 <Routes>
                     <Route path="/*" element={<h1>Hello, world</h1>} />
