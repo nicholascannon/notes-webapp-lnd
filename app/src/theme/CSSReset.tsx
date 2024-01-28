@@ -26,9 +26,10 @@ export const CSSReset = () => (
             }
 
             /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-            ul[role='list'],
-            ol[role='list'] {
+            ul,
+            ol {
                 list-style: none;
+                padding: 0;
             }
 
             /* Set core root defaults */
@@ -38,10 +39,12 @@ export const CSSReset = () => (
 
             /* Set core body defaults */
             body {
+                height: 100vh;
                 min-height: 100vh;
                 text-rendering: optimizeSpeed;
                 line-height: 1.5;
                 background-color: ${theme.colors.background};
+                font-family: ${theme.font};
             }
 
             /* A elements that don't have a class get default styles */
@@ -62,6 +65,11 @@ export const CSSReset = () => (
             textarea,
             select {
                 font: inherit;
+            }
+
+            #root {
+                height: 100vh;
+                min-height: 100vh;
             }
 
             /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

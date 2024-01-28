@@ -1,8 +1,9 @@
 export const theme = {
+    font: 'Rubik Variable, sans-serif',
     colors: {
         foreground: '#f0f0f0',
         background: '#141414',
-        greys: ['#a3a3a3', '#333333', '#242424'],
+        greys: ['#9e9e9e', '#333333', '#242424'],
     },
     space: {
         px: '1px',

@@ -1,4 +1,5 @@
 import React from 'react';
+import '@fontsource-variable/rubik';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 
