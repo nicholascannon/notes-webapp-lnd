@@ -2,12 +2,13 @@ import { Global, css } from '@emotion/react';
 
 export const CSSReset = () => (
     <Global
-        styles={() => css`
+        styles={(theme) => css`
             /* Box sizing rules */
             *,
             *::before,
             *::after {
                 box-sizing: border-box;
+                color: ${theme.colors.foreground};
             }
 
             /* Remove default margin */
@@ -40,6 +41,7 @@ export const CSSReset = () => (
                 min-height: 100vh;
                 text-rendering: optimizeSpeed;
                 line-height: 1.5;
+                background-color: ${theme.colors.background};
             }
 
             /* A elements that don't have a class get default styles */
