@@ -53,6 +53,13 @@ export const theme = {
             full: '9999px',
         },
     },
+    animation: {
+        button: {
+            tap: {
+                scale: 0.9,
+            },
+        },
+    },
 } as const;
 
 declare module '@emotion/react' {

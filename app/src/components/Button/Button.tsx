@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { ComponentProps } from 'react';
+import { theme } from '@/theme';
 
 export const Button = (props: Props) => (
     <StyledButton
@@ -8,7 +9,7 @@ export const Button = (props: Props) => (
             scale: 0,
         }}
         whileTap={{
-            scale: 0.9,
+            scale: theme.animation.button.tap.scale,
         }}
         whileInView={{
             scale: 1,
