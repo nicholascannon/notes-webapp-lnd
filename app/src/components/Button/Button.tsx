@@ -24,7 +24,7 @@ const StyledButton = styled(motion.button)(({ theme }) => ({
     padding: `${theme.space[1]} ${theme.space[4]}`,
 
     borderRadius: theme.borderRadius.radii.md,
-    border: `1px solid ${theme.colors.greys[1]}`,
+    border: `2px solid ${theme.colors.greys[1]}`,
 
     backgroundColor: theme.colors.greys[1],
 
@@ -35,10 +35,10 @@ const StyledButton = styled(motion.button)(({ theme }) => ({
     },
 
     '&:active': {
-        border: `1px solid ${theme.colors.greys[0]}`,
+        border: `2px solid ${theme.colors.greys[0]}`,
     },
     '&:focus': {
-        border: `1px solid ${theme.colors.greys[0]}`,
+        border: `2px solid ${theme.colors.greys[0]}`,
         outline: 0,
     },
 }));
