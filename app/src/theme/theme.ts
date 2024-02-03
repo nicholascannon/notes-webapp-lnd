@@ -3,7 +3,7 @@ export const theme = {
     colors: {
         foreground: '#f0f0f0',
         background: '#141414',
-        greys: ['#9e9e9e', '#333333', '#242424'],
+        greys: ['#9e9e9e', '#333333', '#242424', '#1a1a1a'],
     },
     space: {
         px: '1px',
