@@ -1,13 +1,10 @@
-import { MotionConfig } from '@/config';
+import { AppProvider } from '@/providers/AppProvider';
 import { Router } from '@/router';
-import { ThemeProvider } from '@/theme';
 
 export const App = () => {
     return (
-        <MotionConfig>
-            <ThemeProvider>
-                <Router />
-            </ThemeProvider>
-        </MotionConfig>
+        <AppProvider>
+            <Router />
+        </AppProvider>
     );
 };
