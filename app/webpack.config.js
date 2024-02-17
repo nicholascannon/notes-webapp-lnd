@@ -11,6 +11,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: buildDir,
+        publicPath: '/',
         filename: isDev ? 'static/[name].js' : 'static/[name].[chunkhash:8].js',
         clean: true,
     },
