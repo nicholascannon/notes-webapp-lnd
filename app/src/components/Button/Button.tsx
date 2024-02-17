@@ -22,7 +22,7 @@ type Props = ComponentProps<typeof StyledButton>;
 
 const StyledButton = styled(motion.button)(({ theme }) => ({
     margin: 0,
-    padding: `${theme.space[1]} ${theme.space[4]}`,
+    padding: `${theme.sizes[1]} ${theme.sizes[4]}`,
 
     borderRadius: theme.borderRadius.radii.md,
     border: `2px solid ${theme.colors.greys[1]}`,
