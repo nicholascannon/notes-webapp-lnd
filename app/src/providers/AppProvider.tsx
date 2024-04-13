@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-import { MotionConfig } from '@/config/motion';
+import { AnimationConfig } from '@/config/animations';
 import { ThemeProvider } from '@/theme';
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     return (
-        <MotionConfig>
+        <AnimationConfig>
             <ThemeProvider>{children}</ThemeProvider>
-        </MotionConfig>
+        </AnimationConfig>
     );
 };
