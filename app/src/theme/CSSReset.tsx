@@ -11,25 +11,16 @@ export const CSSReset = () => (
                 color: ${theme.colors.foreground};
             }
 
-            /* Remove default margin */
-            body,
-            h1,
-            h2,
-            h3,
-            h4,
-            p,
-            figure,
-            blockquote,
-            dl,
-            dd {
+            /* Remove default margin and padding */
+            * {
                 margin: 0;
+                padding: 0;
             }
 
             /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
             ul,
             ol {
                 list-style: none;
-                padding: 0;
             }
 
             /* Set core root defaults */
@@ -39,12 +30,12 @@ export const CSSReset = () => (
 
             /* Set core body defaults */
             body {
-                height: 100vh;
                 min-height: 100vh;
                 text-rendering: optimizeSpeed;
                 line-height: 1.5;
                 background-color: ${theme.colors.background};
                 font-family: ${theme.font};
+                position: relative;
             }
 
             /* A elements that don't have a class get default styles */
@@ -68,7 +59,6 @@ export const CSSReset = () => (
             }
 
             #root {
-                height: 100vh;
                 min-height: 100vh;
             }
 
