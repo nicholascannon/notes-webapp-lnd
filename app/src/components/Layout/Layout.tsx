@@ -6,7 +6,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <main
             css={{
                 minHeight: '100%',
-                padding: theme.sizes[16],
+                margin: theme.sizes[16],
             }}
         >
             {children}
