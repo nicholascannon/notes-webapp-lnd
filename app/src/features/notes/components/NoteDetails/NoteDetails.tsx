@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import { Note } from '../..';
 import { CloseButton } from '../../../../components/CloseButton';
 import { GenericModal } from '@/components/GenericModal';
 
-export const NoteDetails = ({ id }: { id: string }) => {
+export const NoteDetails = ({ note }: { note: Note }) => {
     const navigate = useNavigate();
-    // TODO: load note data
 
     return (
         <GenericModal onModalClose={() => navigate('/')}>
             <DetailsContainer>
                 <CloseButton onClick={() => navigate('/')} />
-                NoteDetails for {id}
+                <p>{note.text}</p>
             </DetailsContainer>
         </GenericModal>
     );
