@@ -3,19 +3,21 @@ import { motion } from 'framer-motion';
 import { ComponentProps } from 'react';
 import { theme } from '@/theme';
 
-export const DeleteNoteButton = (props: Props) => {
+export const CloseButton = (props: Props) => {
     return (
-        <StyledDeleteNoteButton
-            data-testid="delete-button"
+        <StyledCloseButton
+            data-testid="close-button"
             whileTap={{ scale: theme.animation.button.tap.scale }}
             {...props}
-        />
+        >
+            x
+        </StyledCloseButton>
     );
 };
 
-type Props = ComponentProps<typeof StyledDeleteNoteButton>;
+type Props = ComponentProps<typeof StyledCloseButton>;
 
-const StyledDeleteNoteButton = styled(motion.button)(({ theme }) => ({
+const StyledCloseButton = styled(motion.button)(({ theme }) => ({
     position: 'absolute',
     right: '-10px',
     top: '-10px',

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { Note } from '../../types';
-import { DeleteNoteButton } from './DeleteNoteButton';
+import { CloseButton } from '@/components/CloseButton';
 
 export const CompactNote = ({
     note,
@@ -18,11 +18,7 @@ export const CompactNote = ({
             onMouseLeave={() => setOnHover(false)}
             onClick={onClick}
         >
-            {onHover && (
-                <DeleteNoteButton onClick={(e) => e.stopPropagation()}>
-                    x
-                </DeleteNoteButton>
-            )}
+            {onHover && <CloseButton onClick={(e) => e.stopPropagation()} />}
             <p>{note.text}</p>
         </Container>
     );
