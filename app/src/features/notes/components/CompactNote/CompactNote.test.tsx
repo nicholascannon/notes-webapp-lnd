@@ -23,10 +23,10 @@ describe('<CompactNote />', () => {
 
         await userEvent.hover(screen.getByText('My note'));
 
-        expect(screen.getByTestId('delete-button')).toBeVisible();
+        expect(screen.getByTestId('close-button')).toBeVisible();
 
         await userEvent.unhover(screen.getByText('My note'));
 
-        expect(() => screen.getByTestId('delete-button')).toThrow();
+        expect(() => screen.getByTestId('close-button')).toThrow();
     });
 });

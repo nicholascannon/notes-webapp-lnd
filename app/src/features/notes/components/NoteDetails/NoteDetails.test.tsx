@@ -18,5 +18,12 @@ describe('<NoteDetails />', () => {
         expect(navigate).toHaveBeenCalledWith('/');
     });
 
-    it('should navigate back to / when closing modal', () => {});
+    it('should navigate back to / when closing modal', async () => {
+        const navigate = mockNavigate();
+        render(<NoteDetails id="1" />);
+
+        await userEvent.click(screen.getByTestId('close-button'));
+
+        expect(navigate).toHaveBeenCalledWith('/');
+    });
 });
