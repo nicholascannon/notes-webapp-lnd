@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Note } from '../..';
-import { CloseButton } from '../../../../components/CloseButton';
+import { CloseButton } from '@/components/CloseButton';
 import { GenericModal } from '@/components/GenericModal';
 
 export const NoteDetails = ({ note }: { note: Note }) => {
