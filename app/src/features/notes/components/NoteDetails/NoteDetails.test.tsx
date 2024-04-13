@@ -17,4 +17,6 @@ describe('<NoteDetails />', () => {
 
         expect(navigate).toHaveBeenCalledWith('/');
     });
+
+    it('should navigate back to / when closing modal', () => {});
 });

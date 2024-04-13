@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import { CloseButton } from '../../../../components/CloseButton';
 import { GenericModal } from '@/components/GenericModal';
 
 export const NoteDetails = ({ id }: { id: string }) => {
@@ -8,7 +9,10 @@ export const NoteDetails = ({ id }: { id: string }) => {
 
     return (
         <GenericModal onModalClose={() => navigate('/')}>
-            <DetailsContainer>NoteDetails for {id}</DetailsContainer>
+            <DetailsContainer>
+                <CloseButton onClick={() => navigate('/')} />
+                NoteDetails for {id}
+            </DetailsContainer>
         </GenericModal>
     );
 };
@@ -19,4 +23,6 @@ const DetailsContainer = styled.div(({ theme }) => ({
     width: theme.sizes.lg,
     height: theme.sizes.md,
     maxHeight: '100vh', // avoid overflow on small heights
+
+    position: 'relative',
 }));
