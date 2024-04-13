@@ -5,7 +5,7 @@ export const theme = {
         background: '#141414',
         greys: ['#9e9e9e', '#333333', '#242424', '#1a1a1a'],
     },
-    space: {
+    sizes: {
         px: '1px',
         0.5: '0.125rem',
         1: '0.25rem',
@@ -39,6 +39,30 @@ export const theme = {
         72: '18rem',
         80: '20rem',
         96: '24rem',
+
+        max: 'max-content',
+        min: 'min-content',
+        full: '100%',
+        '3xs': '14rem',
+        '2xs': '16rem',
+        xs: '20rem',
+        sm: '24rem',
+        md: '28rem',
+        lg: '32rem',
+        xl: '36rem',
+        '2xl': '42rem',
+        '3xl': '48rem',
+        '4xl': '56rem',
+        '5xl': '64rem',
+        '6xl': '72rem',
+        '7xl': '80rem',
+        '8xl': '90rem',
+        container: {
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px',
+        },
     },
     borderRadius: {
         radii: {
@@ -59,6 +83,21 @@ export const theme = {
                 scale: 0.9,
             },
         },
+    },
+    zIndices: {
+        hide: -1,
+        auto: 'auto',
+        base: 0,
+        docked: 10,
+        dropdown: 1000,
+        sticky: 1100,
+        banner: 1200,
+        overlay: 1300,
+        modal: 1400,
+        popover: 1500,
+        skipLink: 1600,
+        toast: 1700,
+        tooltip: 1800,
     },
 } as const;
 
