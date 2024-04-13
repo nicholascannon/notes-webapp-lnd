@@ -18,11 +18,14 @@ export const NoteDetails = ({ note }: { note: Note }) => {
 };
 
 const DetailsContainer = styled.div(({ theme }) => ({
-    backgroundColor: 'red',
+    backgroundColor: theme.colors.greys[2],
 
     width: theme.sizes.lg,
     height: theme.sizes.md,
     maxHeight: '100vh', // avoid overflow on small heights
 
     position: 'relative',
+
+    padding: theme.sizes[8],
+    borderRadius: theme.borderRadius.radii.lg,
 }));

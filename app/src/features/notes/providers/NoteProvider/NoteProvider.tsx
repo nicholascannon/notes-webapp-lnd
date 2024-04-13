@@ -5,12 +5,12 @@ import {
     useContext,
     useState,
 } from 'react';
+import { NIL as NIL_UUID } from 'uuid';
 import { Note } from '../..';
-import { getUUID } from '@/utils/getUUID';
 
 // TODO: remove this test note
 const TEST_NOTE = {
-    id: getUUID(),
+    id: NIL_UUID,
     lastUpdate: new Date(),
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto non at exercitationem libero molestiae, labore quae autem fuga facilis distinctio sequi totam ullam cumque ab. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto non at exercitationem libero molestiae, labore quae autem fuga facilis distinctio sequi totam ullam cumque ab. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto non at exercitationem libero molestiae, labore quae autem fuga facilis distinctio sequi totam ullam cumque ab.',
 };
