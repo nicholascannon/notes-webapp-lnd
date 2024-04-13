@@ -1,0 +1,1 @@
+export { NoteDetails } from './NoteDetails';

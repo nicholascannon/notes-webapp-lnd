@@ -10,8 +10,13 @@ export const GenericModal = ({
     onModalClose?: () => void;
 }) => {
     return createPortal(
-        <Overlay onClick={onModalClose}>
-            <div onClick={(e) => e.stopPropagation()}>{children}</div>
+        <Overlay data-testid="generic-modal-overlay" onClick={onModalClose}>
+            <div
+                data-testid="generic-modal"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {children}
+            </div>
         </Overlay>,
         document.body,
     );
