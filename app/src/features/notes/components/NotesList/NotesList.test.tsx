@@ -1,6 +1,7 @@
 import { userEvent } from '@testing-library/user-event';
 import { Note } from '../..';
 import { NotesList } from '.';
+import { mockNavigate } from '@/utils/mocks/navigate';
 import { render, screen } from '@/utils/testing';
 
 const renderNotesList = ({ notes }: { notes: Note[] }) => {
@@ -21,12 +22,13 @@ describe('<NotesList />', () => {
     });
 
     it('should navigate to note details on click', async () => {
+        const navigate = mockNavigate();
         renderNotesList({
             notes: [{ id: '1', lastUpdate: new Date(), text: 'Note 1' }],
         });
 
         await userEvent.click(screen.getByText('Note 1'));
 
-        expect(window.location.pathname).toBe('/note/1');
+        expect(navigate).toHaveBeenCalledWith('/note/1');
     });
 });
