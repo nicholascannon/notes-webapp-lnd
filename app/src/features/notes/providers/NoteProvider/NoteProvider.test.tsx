@@ -1,9 +1,11 @@
 import { Note } from '../..';
 import { TEST_NOTES } from './test/testNotes';
 import { NoteProvider, useNotes } from '.';
+import * as uuid from '@/utils/getUUID';
 import { UUID_REGEX, renderHook } from '@/utils/testing';
 
 jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
+jest.spyOn(uuid, 'getUUID');
 
 const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
     return renderHook(() => useNotes(), {
@@ -25,6 +27,7 @@ describe('<NoteProvider />', () => {
         const note = result.current.notes[0];
         expect(note.id).toMatch(UUID_REGEX);
         expect(note.text).toBe('My note');
+        expect(uuid.getUUID).toHaveBeenCalled();
         expect(note.lastUpdate.toDateString()).toBe('Mon Jan 01 2024');
     });
 
