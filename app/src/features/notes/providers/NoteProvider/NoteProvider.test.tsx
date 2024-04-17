@@ -2,7 +2,7 @@ import { Note } from '../..';
 import { TEST_NOTES } from './test/testNotes';
 import { NoteProvider, useNotes } from '.';
 import * as utils from '@/utils/getUUID';
-import { UUID_REGEX, renderHook } from '@/utils/testing';
+import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
 jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
 jest.spyOn(utils, 'getUUID');
@@ -18,11 +18,10 @@ const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
 };
 
 describe('<NoteProvider />', () => {
-    it('should add a note', () => {
-        const { result, rerender } = renderUseNotes();
+    it('should add a note', async () => {
+        const { result } = renderUseNotes();
 
-        result.current.addNote('My note');
-        rerender();
+        act(() => result.current.addNote('My note'));
 
         const note = result.current.notes[0];
         expect(note.id).toMatch(UUID_REGEX);
@@ -50,25 +49,27 @@ describe('<NoteProvider />', () => {
         expect(result.current.getNote('does-note-exist')).toBeUndefined();
     });
 
-    it('should delete a note and return it', () => {
-        const { result, rerender } = renderUseNotes({
+    it('should delete a note and return it', async () => {
+        const { result } = renderUseNotes({
             initialNotes: TEST_NOTES,
         });
 
-        const note = result.current.deleteNote(TEST_NOTES[0].id);
-        rerender();
+        const note = await act(() =>
+            result.current.deleteNote(TEST_NOTES[0].id),
+        );
 
         expect(note).toBe(TEST_NOTES[0]);
         expect(result.current.notes).toStrictEqual(TEST_NOTES.slice(1));
     });
 
-    it('should do nothing when deleting a note that does not exist', () => {
-        const { result, rerender } = renderUseNotes({
+    it('should do nothing when deleting a note that does not exist', async () => {
+        const { result } = renderUseNotes({
             initialNotes: TEST_NOTES,
         });
 
-        const note = result.current.deleteNote('does-not-exist');
-        rerender();
+        const note = await act(() =>
+            result.current.deleteNote('does-not-exist'),
+        );
 
         expect(note).toBeUndefined();
         expect(result.current.notes).toStrictEqual(TEST_NOTES);
