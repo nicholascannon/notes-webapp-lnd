@@ -76,4 +76,26 @@ describe('<NoteProvider />', () => {
         expect(note).toBeUndefined();
         expect(result.current.notes).toStrictEqual(TEST_NOTES);
     });
+
+    it('should throw when editing a note that does not exist', () => {
+        const { result } = renderUseNotes();
+
+        expect(() =>
+            result.current.editNote('does-not-exist', 'Should throw'),
+        ).toThrow(
+            'Unable to edit note: note with id does-not-exist does not exist',
+        );
+    });
+
+    it('should edit a note and return it', async () => {
+        const { result } = renderUseNotes({ initialNotes: TEST_NOTES });
+
+        await act(() => result.current.editNote('1', 'Updated'));
+
+        expect(result.current.notes[0]).toStrictEqual({
+            id: '1',
+            text: 'Updated',
+            lastUpdate: new Date(),
+        });
+    });
 });

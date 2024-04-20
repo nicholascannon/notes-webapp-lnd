@@ -33,6 +33,18 @@ export const NoteProvider = ({
         setNotes(newNotes);
         return deleted;
     };
+    const editNote = (id: string, text: string) => {
+        if (!notes[id]) {
+            throw new Error(
+                `Unable to edit note: note with id ${id} does not exist`,
+            );
+        }
+
+        const note: Note = { ...notes[id], text, lastUpdate: new Date() };
+        setNotes((notes) => ({ ...notes, [note.id]: note }));
+
+        return note;
+    };
 
     return (
         <NoteContext.Provider
@@ -41,6 +53,7 @@ export const NoteProvider = ({
                 addNote,
                 getNote,
                 deleteNote,
+                editNote,
             }}
         >
             {children}
@@ -57,6 +70,7 @@ type ContextState = {
     addNote: (text: string) => void;
     getNote: (id: string) => Note | undefined;
     deleteNote: (id: string) => Note | undefined;
+    editNote: (id: string, text: string) => Note;
 };
 
 export const useNotes = () => {
