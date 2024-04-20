@@ -31,4 +31,6 @@ describe('<NoteDetails />', () => {
 
         expect(navigate).toHaveBeenCalledWith('/');
     });
+
+    it('should edit note text', () => {});
 });

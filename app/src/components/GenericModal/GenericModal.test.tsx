@@ -5,7 +5,7 @@ import { render, screen } from '@/utils/testing';
 describe('<GenericModal />', () => {
     it('should render modal and overlay', () => {
         render(
-            <GenericModal>
+            <GenericModal onModalClose={jest.fn()}>
                 <p>Content</p>
             </GenericModal>,
         );

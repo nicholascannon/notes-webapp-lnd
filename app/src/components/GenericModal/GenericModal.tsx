@@ -7,7 +7,7 @@ export const GenericModal = ({
     onModalClose,
 }: {
     children: ReactNode;
-    onModalClose?: () => void;
+    onModalClose: () => void;
 }) => {
     return createPortal(
         <Overlay data-testid="generic-modal-overlay" onClick={onModalClose}>
@@ -36,4 +36,6 @@ const Overlay = styled.div(({ theme }) => ({
     justifyContent: 'center',
 
     zIndex: theme.zIndices.modal,
+
+    cursor: 'pointer',
 }));
