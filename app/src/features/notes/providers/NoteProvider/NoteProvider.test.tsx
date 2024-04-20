@@ -4,9 +4,6 @@ import { NoteProvider, useNotes } from '.';
 import * as utils from '@/utils/getUUID';
 import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
-jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
-jest.spyOn(utils, 'getUUID');
-
 const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
     return renderHook(() => useNotes(), {
         wrapper: ({ children }) => (
@@ -18,6 +15,11 @@ const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
 };
 
 describe('<NoteProvider />', () => {
+    beforeEach(() => {
+        jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
+        jest.spyOn(utils, 'getUUID');
+    });
+
     it('should add a note', async () => {
         const { result } = renderUseNotes();
 
