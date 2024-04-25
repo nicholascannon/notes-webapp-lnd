@@ -15,7 +15,6 @@ describe('<NotesList />', () => {
                     { id: '2', lastUpdate: new Date(), text: 'Note 2' },
                     { id: '3', lastUpdate: new Date(), text: 'Note 3' },
                 ]}
-                enableInitAnimation={false}
             />,
         );
     });
