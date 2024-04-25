@@ -5,7 +5,7 @@
         "start": "NODE_ENV=development webpack serve --open --progress",
         "build": "NODE_ENV=production tsc && npm run lint && webpack --progress",
         "test": "jest",
-        "lint": "eslint .",
+        "lint": "eslint . --cache",
         "lint:fix": "npm run lint -- --fix"
     },
     "dependencies": {
