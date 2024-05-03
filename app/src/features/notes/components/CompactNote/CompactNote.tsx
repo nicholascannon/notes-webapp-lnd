@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useNotes } from '../../providers/NoteProvider/NoteProvider';
 import { Note } from '../../types';
 import { CloseButton } from '@/components/CloseButton';
 
@@ -10,15 +10,15 @@ export const CompactNote = ({
     note: Note;
     onClick?: () => void;
 }) => {
-    const [onHover, setOnHover] = useState(false);
+    const { deleteNote } = useNotes();
 
     return (
-        <Container
-            onMouseEnter={() => setOnHover(true)}
-            onMouseLeave={() => setOnHover(false)}
-            onClick={onClick}
-        >
-            {onHover && <CloseButton onClick={(e) => e.stopPropagation()} />}
+        <Container onClick={onClick}>
+            <CloseButton
+                className="close-button"
+                // TODO: should add confirmation modal here
+                onClick={() => deleteNote(note.id)}
+            />
             <p>{note.text}</p>
         </Container>
     );
@@ -50,5 +50,12 @@ const Container = styled.article(({ theme }) => ({
     '&:focus': {
         border: `2px solid ${theme.colors.greys[0]}`,
         outline: 0,
+    },
+
+    '& > .close-button': {
+        display: 'none',
+    },
+    '&:hover > .close-button': {
+        display: 'block',
     },
 }));
