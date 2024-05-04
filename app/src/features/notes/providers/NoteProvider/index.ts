@@ -1,1 +1,1 @@
-export { NoteProvider, useNotes } from './NoteProvider';
+export { NoteProvider } from './NoteProvider';

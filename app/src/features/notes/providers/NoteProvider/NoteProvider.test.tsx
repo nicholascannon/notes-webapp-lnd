@@ -1,6 +1,7 @@
 import { Note } from '../..';
+import { useNotes } from './NoteProvider';
 import { TEST_NOTES } from './test/testNotes';
-import { NoteProvider, useNotes } from '.';
+import { NoteProvider } from '.';
 import * as utils from '@/utils/getUUID';
 import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
