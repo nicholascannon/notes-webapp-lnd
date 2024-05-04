@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Note, useNotes } from '../..';
+import { Note } from '../..';
+import { useNotes } from '../../providers/NoteProvider/NoteProvider';
 import { CloseButton } from '@/components/CloseButton';
 import { GenericModal } from '@/components/GenericModal';
+import { addToast } from '@/providers/ToastProvider';
 
 export const NoteDetails = ({ note }: { note: Note }) => {
     const navigate = useNavigate();
@@ -16,8 +18,14 @@ export const NoteDetails = ({ note }: { note: Note }) => {
                 <CloseButton onClick={() => navigate('/')} />
 
                 <TextEditor
+                    data-testid="note-text-editor"
                     onChange={(e) => setNoteText(e.target.value)}
-                    onBlur={() => editNote(note.id, noteText)}
+                    onBlur={() => {
+                        if (note.text === noteText) return;
+                        editNote(note.id, noteText);
+                        addToast('Note saved!');
+                        // TODO: save to localStorage
+                    }}
                     value={noteText}
                 />
             </DetailsContainer>
@@ -43,7 +51,7 @@ const DetailsContainer = styled.div(({ theme }) => ({
 
 const TextEditor = styled.textarea(({ theme }) => ({
     color: theme.colors.foreground,
-    backgroundColor: theme.colors.greys[2],
+    backgroundColor: 'transparent',
 
     width: '100%',
     height: '100%',

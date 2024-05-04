@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { useNotes } from '..';
 import { NoteDetails } from '../components/NoteDetails';
+import { useNotes } from '../providers/NoteProvider/NoteProvider';
 
 export const NoteDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -8,7 +8,6 @@ export const NoteDetailsPage = () => {
 
     const note = id ? getNote(id) : undefined;
     if (!note) {
-        // TODO: trigger modal so user knows note is not found
         return <Navigate to="/" />;
     }
 
