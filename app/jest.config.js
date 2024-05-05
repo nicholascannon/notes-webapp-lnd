@@ -9,4 +9,5 @@ module.exports = {
         '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     },
     setupFilesAfterEnv: ['<rootDir>/src/config/jest.ts'],
+    clearMocks: true,
 };
