@@ -29,7 +29,7 @@ describe('<NoteDetails />', () => {
         expect(navigate).toHaveBeenCalledWith('/');
     });
 
-    it('should navigate back to / when closing modal', async () => {
+    it('should navigate back to / when closing modal via close button', async () => {
         await userEvent.click(screen.getByTestId('close-button'));
 
         expect(navigate).toHaveBeenCalledWith('/');
