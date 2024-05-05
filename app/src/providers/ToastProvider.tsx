@@ -16,6 +16,9 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
                         borderRadius: theme.borderRadius.radii.md,
                     },
                 }}
+                containerStyle={{
+                    zIndex: theme.zIndices.toast,
+                }}
             />
         </>
     );
