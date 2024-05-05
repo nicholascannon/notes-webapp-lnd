@@ -44,4 +44,13 @@ describe('<NoteDetails />', () => {
         expect(editNote).toHaveBeenCalledWith('1', 'My note is now updated');
         expect(addToast).toHaveBeenCalledWith('Note saved!');
     });
+
+    it('should not edit note and add toast if note content did not change', () => {
+        const editor = screen.getByTestId('note-text-editor');
+
+        fireEvent.blur(editor);
+
+        expect(editNote).not.toHaveBeenCalled();
+        expect(addToast).not.toHaveBeenCalled();
+    });
 });
