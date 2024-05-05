@@ -35,7 +35,7 @@ describe('<NoteDetails />', () => {
         expect(navigate).toHaveBeenCalledWith('/');
     });
 
-    it('should edit note text', async () => {
+    it('should edit note on blur and add toast', async () => {
         const editor = screen.getByTestId('note-text-editor');
 
         await userEvent.type(editor, ' is now updated');
