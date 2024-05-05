@@ -19,6 +19,8 @@ describe('<NoteProvider />', () => {
     beforeEach(() => {
         jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
         jest.spyOn(utils, 'getUUID');
+
+        localStorage.clear();
     });
 
     it('should add a note', async () => {

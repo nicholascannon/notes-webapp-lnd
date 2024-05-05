@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react';
 import { Note } from '../..';
+import * as noteStorage from '../../storage/noteStorage';
 import { getUUID } from '@/utils/getUUID';
 
 export const NoteProvider = ({
@@ -20,19 +21,28 @@ export const NoteProvider = ({
 
     // TODO: maybe make these stable refs with useCallback?
     const addNote = (text: string) => {
-        const note: Note = {
+        const newNote: Note = {
             id: getUUID(),
             text,
             lastUpdate: new Date(),
         };
-        setNotes((notes) => ({ ...notes, [note.id]: note }));
+        const updatedState = { ...notes, [newNote.id]: newNote };
+
+        noteStorage.saveNotes(updatedState);
+        setNotes(updatedState);
     };
+
     const getNote = (id: string) => notes[id];
+
     const deleteNote = (id: string) => {
-        const { [id]: deleted, ...newNotes } = notes;
-        setNotes(newNotes);
+        const { [id]: deleted, ...updatedState } = notes;
+
+        noteStorage.saveNotes(updatedState);
+        setNotes(updatedState);
+
         return deleted;
     };
+
     const editNote = (id: string, text: string) => {
         if (!notes[id]) {
             throw new Error(
@@ -40,10 +50,15 @@ export const NoteProvider = ({
             );
         }
 
-        const note: Note = { ...notes[id], text, lastUpdate: new Date() };
-        setNotes((notes) => ({ ...notes, [note.id]: note }));
+        const updatedNote: Note = {
+            ...notes[id],
+            text,
+            lastUpdate: new Date(),
+        };
+        const updatedState = { ...notes, [updatedNote.id]: updatedNote };
 
-        return note;
+        noteStorage.saveNotes(updatedState);
+        setNotes(updatedState);
     };
 
     return (
@@ -61,7 +76,7 @@ export const NoteProvider = ({
     );
 };
 
-type NoteState = Record<string, Note>;
+export type NoteState = Record<string, Note>;
 
 const NoteContext = createContext<ContextState | undefined>(undefined);
 
@@ -70,7 +85,7 @@ type ContextState = {
     addNote: (text: string) => void;
     getNote: (id: string) => Note | undefined;
     deleteNote: (id: string) => Note | undefined;
-    editNote: (id: string, text: string) => Note;
+    editNote: (id: string, text: string) => void;
 };
 
 export const useNotes = () => {

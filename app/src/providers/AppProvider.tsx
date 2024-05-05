@@ -2,26 +2,17 @@ import { ReactNode } from 'react';
 import { ToastProvider } from './ToastProvider';
 import { AnimationConfig } from '@/config/animations';
 import { NoteProvider } from '@/features/notes';
+import { getNotes } from '@/features/notes/storage/noteStorage';
 import { ThemeProvider } from '@/theme';
-import { getUUID } from '@/utils/getUUID';
+
+const NOTES = getNotes();
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     return (
         <AnimationConfig>
             <ThemeProvider>
                 <ToastProvider>
-                    <NoteProvider
-                        // TODO: fetch these from localStorage
-                        initialNotes={[
-                            {
-                                id: getUUID(),
-                                lastUpdate: new Date(),
-                                text: 'Please update me',
-                            },
-                        ]}
-                    >
-                        {children}
-                    </NoteProvider>
+                    <NoteProvider initialNotes={NOTES}>{children}</NoteProvider>
                 </ToastProvider>
             </ThemeProvider>
         </AnimationConfig>

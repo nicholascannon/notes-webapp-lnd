@@ -24,7 +24,6 @@ export const NoteDetails = ({ note }: { note: Note }) => {
                         if (note.text === noteText) return;
                         editNote(note.id, noteText);
                         addToast('Note saved!');
-                        // TODO: save to localStorage
                     }}
                     value={noteText}
                 />
