@@ -1,13 +1,16 @@
 import { userEvent } from '@testing-library/user-event';
+import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
 import { NoteDetails } from '.';
+import * as toasts from '@/providers/ToastProvider';
 import { mockNavigate } from '@/utils/mocks/navigate';
-import { render, screen } from '@/utils/testing';
+import { fireEvent, render, screen } from '@/utils/testing';
 
 describe('<NoteDetails />', () => {
-    let navigate: jest.Mock;
+    const navigate = mockNavigate();
+    const addToast = jest.spyOn(toasts, 'addToast');
+    const { editNote } = mockUseNotes();
 
     beforeEach(() => {
-        navigate = mockNavigate();
         render(
             <NoteDetails
                 note={{ id: '1', lastUpdate: new Date(), text: 'My note' }}
@@ -32,5 +35,13 @@ describe('<NoteDetails />', () => {
         expect(navigate).toHaveBeenCalledWith('/');
     });
 
-    it('should edit note text', () => {});
+    it('should edit note text', async () => {
+        const editor = screen.getByTestId('note-text-editor');
+
+        await userEvent.type(editor, ' is now updated');
+        fireEvent.blur(editor);
+
+        expect(editNote).toHaveBeenCalledWith('1', 'My note is now updated');
+        expect(addToast).toHaveBeenCalledWith('Note saved!');
+    });
 });
