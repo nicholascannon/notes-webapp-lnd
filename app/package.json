@@ -5,6 +5,7 @@
         "start": "NODE_ENV=development webpack serve --open --progress",
         "build": "NODE_ENV=production tsc && npm run lint && webpack --progress",
         "test": "jest",
+        "coverage": "npm run test -- --collectCoverage",
         "lint": "eslint . --cache",
         "lint:fix": "npm run lint -- --fix",
         "prepare": "cd .. && husky app/.husky"
