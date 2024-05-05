@@ -1,22 +1,13 @@
 import { userEvent } from '@testing-library/user-event';
-import * as useNotes from '../../providers/NoteProvider/NoteProvider';
+import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
 import { CompactNote } from '.';
 import { getUUID } from '@/utils/getUUID';
 import { render, screen } from '@/utils/testing';
 
 describe('<CompactNote />', () => {
-    const deleteNote = jest.fn();
+    const { deleteNote } = mockUseNotes();
 
     beforeEach(() => {
-        // must use long import here for spy to work :(
-        jest.spyOn(useNotes, 'useNotes').mockImplementation(() => ({
-            addNote: jest.fn(),
-            editNote: jest.fn(),
-            deleteNote,
-            getNote: jest.fn(),
-            notes: [],
-        }));
-
         render(
             <CompactNote
                 note={{
