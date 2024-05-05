@@ -4,10 +4,9 @@ import { mockNavigate } from '@/utils/mocks/navigate';
 import { render, screen } from '@/utils/testing';
 
 describe('<NotesList />', () => {
-    let navigate: jest.Mock;
+    const navigate = mockNavigate();
 
     beforeEach(() => {
-        navigate = mockNavigate();
         render(
             <NotesList
                 notes={[
