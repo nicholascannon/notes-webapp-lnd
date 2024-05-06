@@ -13,6 +13,7 @@ module.exports = {
         path: buildDir,
         publicPath: '/',
         filename: isDev ? 'static/[name].js' : 'static/[name].[chunkhash:8].js',
+        assetModuleFilename: 'static/[hash][ext][query]',
         clean: true,
     },
     resolve: {
@@ -38,12 +39,12 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: 'file-loader',
-            },
-            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                type: 'asset',
             },
         ],
     },
