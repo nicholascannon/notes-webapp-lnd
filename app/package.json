@@ -1,6 +1,6 @@
 {
     "name": "notes",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "scripts": {
         "start": "NODE_ENV=development webpack serve --open --progress",
         "build": "NODE_ENV=production tsc && npm run lint && webpack --progress",
