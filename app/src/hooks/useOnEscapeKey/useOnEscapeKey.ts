@@ -7,7 +7,6 @@ export const useOnEscapeKey = (onEscape: () => void) => {
         const element = ref.current;
 
         const handleKeyDown = (event: KeyboardEvent) => {
-            console.log('keydown');
             if (event.key === 'Escape') onEscape();
         };
 
