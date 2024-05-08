@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { useOnEscapeKey } from '@/hooks/useOnEscapeKey';
 
 export const GenericModal = ({
     children,
@@ -9,10 +10,13 @@ export const GenericModal = ({
     children: ReactNode;
     onModalClose: () => void;
 }) => {
+    const ref = useOnEscapeKey(onModalClose);
+
     return createPortal(
         <Overlay data-testid="generic-modal-overlay" onClick={onModalClose}>
             <div
                 data-testid="generic-modal"
+                ref={ref}
                 onClick={(e) => e.stopPropagation()}
             >
                 {children}
