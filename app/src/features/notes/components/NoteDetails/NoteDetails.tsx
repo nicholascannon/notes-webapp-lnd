@@ -12,19 +12,26 @@ export const NoteDetails = ({ note }: { note: Note }) => {
     const [noteText, setNoteText] = useState(note.text);
     const { editNote } = useNotes();
 
+    const saveNote = () => {
+        if (note.text === noteText) return;
+        editNote(note.id, noteText);
+        addToast('Note saved!');
+    };
+
+    const onClose = () => {
+        saveNote();
+        navigate('/');
+    };
+
     return (
-        <GenericModal onModalClose={() => navigate('/')}>
+        <GenericModal onModalClose={onClose}>
             <DetailsContainer>
-                <CloseButton onClick={() => navigate('/')} />
+                <CloseButton onClick={onClose} />
 
                 <TextEditor
                     data-testid="note-text-editor"
                     onChange={(e) => setNoteText(e.target.value)}
-                    onBlur={() => {
-                        if (note.text === noteText) return;
-                        editNote(note.id, noteText);
-                        addToast('Note saved!');
-                    }}
+                    onBlur={saveNote}
                     value={noteText}
                 />
             </DetailsContainer>

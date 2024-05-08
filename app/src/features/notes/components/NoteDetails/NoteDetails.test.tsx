@@ -3,7 +3,7 @@ import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
 import { NoteDetails } from '.';
 import * as toasts from '@/providers/ToastProvider';
 import { mockNavigate } from '@/utils/mocks/navigate';
-import { fireEvent, render, screen } from '@/utils/testing';
+import { fireEscapeKeyEvent, fireEvent, render, screen } from '@/utils/testing';
 
 describe('<NoteDetails />', () => {
     const navigate = mockNavigate();
@@ -22,35 +22,55 @@ describe('<NoteDetails />', () => {
         expect(screen.getByText('My note')).toBeVisible();
     });
 
-    it('should navigate back to / when closing modal', async () => {
-        // click outside modal
-        await userEvent.click(screen.getByTestId('generic-modal-overlay'));
+    describe('modal close', () => {
+        it('should navigate back to / when closing modal', async () => {
+            // click outside modal
+            await userEvent.click(screen.getByTestId('generic-modal-overlay'));
 
-        expect(navigate).toHaveBeenCalledWith('/');
+            expect(navigate).toHaveBeenCalledWith('/');
+        });
+
+        it('should navigate back to / when closing modal via close button', async () => {
+            await userEvent.click(screen.getByTestId('close-button'));
+
+            expect(navigate).toHaveBeenCalledWith('/');
+        });
     });
 
-    it('should navigate back to / when closing modal via close button', async () => {
-        await userEvent.click(screen.getByTestId('close-button'));
+    describe('edit note', () => {
+        it('should edit note on blur and add toast', async () => {
+            const editor = screen.getByTestId('note-text-editor');
 
-        expect(navigate).toHaveBeenCalledWith('/');
-    });
+            await userEvent.type(editor, ' is now updated');
+            fireEvent.blur(editor);
 
-    it('should edit note on blur and add toast', async () => {
-        const editor = screen.getByTestId('note-text-editor');
+            expect(editNote).toHaveBeenCalledWith(
+                '1',
+                'My note is now updated',
+            );
+            expect(addToast).toHaveBeenCalledWith('Note saved!');
+        });
 
-        await userEvent.type(editor, ' is now updated');
-        fireEvent.blur(editor);
+        it('should edit note on close and add toast', async () => {
+            const editor = screen.getByTestId('note-text-editor');
 
-        expect(editNote).toHaveBeenCalledWith('1', 'My note is now updated');
-        expect(addToast).toHaveBeenCalledWith('Note saved!');
-    });
+            await userEvent.type(editor, ' is now updated');
+            fireEscapeKeyEvent(editor);
 
-    it('should not edit note and add toast if note content did not change', () => {
-        const editor = screen.getByTestId('note-text-editor');
+            expect(editNote).toHaveBeenCalledWith(
+                '1',
+                'My note is now updated',
+            );
+            expect(addToast).toHaveBeenCalledWith('Note saved!');
+        });
 
-        fireEvent.blur(editor);
+        it('should not edit note and add toast if note content did not change', () => {
+            const editor = screen.getByTestId('note-text-editor');
 
-        expect(editNote).not.toHaveBeenCalled();
-        expect(addToast).not.toHaveBeenCalled();
+            fireEvent.blur(editor);
+
+            expect(editNote).not.toHaveBeenCalled();
+            expect(addToast).not.toHaveBeenCalled();
+        });
     });
 });
