@@ -27,6 +27,7 @@ export const NoteDetails = ({ note }: { note: Note }) => {
         <GenericModal onModalClose={onClose}>
             <DetailsContainer>
                 <Button
+                    $variant="SECONDARY"
                     style={{
                         position: 'absolute',
                         right: '-10px',
