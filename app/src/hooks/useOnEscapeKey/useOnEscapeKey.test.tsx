@@ -3,7 +3,7 @@ import { useOnEscapeKey } from '.';
 import { fireEscapeKeyEvent, fireEvent, render, screen } from '@/utils/testing';
 
 const TestComponent = ({ fn }: { fn: jest.Mock }) => {
-    const ref = useOnEscapeKey(fn);
+    const ref = useOnEscapeKey<HTMLDivElement>(fn);
     return <div ref={ref} data-testid="container"></div>;
 };
 

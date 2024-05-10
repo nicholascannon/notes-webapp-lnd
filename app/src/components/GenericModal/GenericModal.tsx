@@ -10,7 +10,7 @@ export const GenericModal = ({
     children: ReactNode;
     onModalClose: () => void;
 }) => {
-    const ref = useOnEscapeKey(onModalClose);
+    const ref = useOnEscapeKey<HTMLDivElement>(onModalClose);
 
     return createPortal(
         <Overlay data-testid="generic-modal-overlay" onClick={onModalClose}>
