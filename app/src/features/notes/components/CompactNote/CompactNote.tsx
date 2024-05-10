@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useNotes } from '../../providers/NoteProvider/NoteProvider';
 import { Note } from '../../types';
-import { CloseButton } from '@/components/CloseButton';
+import { Button } from '@/components/Button';
 
 export const CompactNote = ({
     note,
@@ -14,11 +14,21 @@ export const CompactNote = ({
 
     return (
         <Container onClick={onClick}>
-            <CloseButton
+            <Button
                 className="close-button"
-                // TODO: should add confirmation modal here
-                onClick={() => deleteNote(note.id)}
-            />
+                style={{
+                    position: 'absolute',
+                    right: '-10px',
+                    top: '-10px',
+                }}
+                onClick={() => {
+                    // TODO: should add confirmation modal here
+                    deleteNote(note.id);
+                }}
+            >
+                x
+            </Button>
+
             <p>{note.text}</p>
         </Container>
     );

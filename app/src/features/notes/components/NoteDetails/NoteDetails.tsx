@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Note } from '../..';
 import { useNotes } from '../../providers/NoteProvider/NoteProvider';
-import { CloseButton } from '@/components/CloseButton';
+import { Button } from '@/components/Button';
 import { GenericModal } from '@/components/GenericModal';
 import { addToast } from '@/providers/ToastProvider';
 
@@ -26,7 +26,16 @@ export const NoteDetails = ({ note }: { note: Note }) => {
     return (
         <GenericModal onModalClose={onClose}>
             <DetailsContainer>
-                <CloseButton onClick={onClose} />
+                <Button
+                    style={{
+                        position: 'absolute',
+                        right: '-10px',
+                        top: '-10px',
+                    }}
+                    onClick={onClose}
+                >
+                    x
+                </Button>
 
                 <TextEditor
                     data-testid="note-text-editor"

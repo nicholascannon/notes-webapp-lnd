@@ -3,25 +3,20 @@ import { motion } from 'framer-motion';
 import { ComponentProps } from 'react';
 import { theme } from '@/theme';
 
-export const CloseButton = (props: Props) => {
+export const Button = (props: Props) => {
     return (
-        <StyledCloseButton
+        <StyledButton
             data-testid="close-button"
             whileTap={{ scale: theme.animation.button.tap.scale }}
             {...props}
-        >
-            x
-        </StyledCloseButton>
+        />
     );
 };
 
-type Props = ComponentProps<typeof StyledCloseButton>;
+type Props = ComponentProps<typeof StyledButton>;
 
-const StyledCloseButton = styled(motion.button)(({ theme }) => ({
-    position: 'absolute',
-    right: '-10px',
-    top: '-10px',
-    borderRadius: theme.borderRadius.radii.full,
+const StyledButton = styled(motion.button)(({ theme }) => ({
+    borderRadius: theme.borderRadius.radii['3xl'],
     border: 'none',
     width: theme.sizes[8],
     height: theme.sizes[8],
