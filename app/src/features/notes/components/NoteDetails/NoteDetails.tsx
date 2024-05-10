@@ -28,6 +28,7 @@ export const NoteDetails = ({ note }: { note: Note }) => {
             <DetailsContainer>
                 <Button
                     $variant="SECONDARY"
+                    data-testid="close-button"
                     style={{
                         position: 'absolute',
                         right: '-10px',

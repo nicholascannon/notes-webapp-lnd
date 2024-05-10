@@ -7,7 +7,6 @@ export const Button = (props: Props) => {
     const { $variant, ...buttonProps } = props;
     return (
         <StyledButton
-            data-testid="close-button"
             whileTap={{ scale: theme.animation.button.tap.scale }}
             $variant={$variant || 'PRIMARY'}
             {...buttonProps}

@@ -16,6 +16,7 @@ export const CompactNote = ({
         <Container onClick={onClick}>
             <Button
                 className="close-button"
+                data-testid="close-button"
                 style={{
                     position: 'absolute',
                     right: '-10px',
