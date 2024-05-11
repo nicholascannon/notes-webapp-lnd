@@ -33,7 +33,7 @@ export const NotesList = ({
             <AddNoteButton
                 onClick={() => {
                     const { id } = addNote();
-                    navigate(`/note/${id}`);
+                    navigate(`/note/${id}`, { state: { autoFocus: true } });
                 }}
             />
         </>

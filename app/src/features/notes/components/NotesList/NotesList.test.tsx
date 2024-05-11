@@ -35,6 +35,8 @@ describe('<NotesList />', () => {
         await userEvent.click(screen.getByText('+'));
 
         expect(addNote).toHaveBeenCalled();
-        expect(navigate).toHaveBeenCalledWith('/note/1');
+        expect(navigate).toHaveBeenCalledWith('/note/1', {
+            state: { autoFocus: true },
+        });
     });
 });

@@ -7,7 +7,13 @@ import { Button } from '@/components/Button';
 import { GenericModal } from '@/components/GenericModal';
 import { addToast } from '@/providers/ToastProvider';
 
-export const NoteDetails = ({ note }: { note: Note }) => {
+export const NoteDetails = ({
+    note,
+    autoFocus,
+}: {
+    note: Note;
+    autoFocus?: boolean;
+}) => {
     const navigate = useNavigate();
     const [noteText, setNoteText] = useState(note.text);
     const { editNote } = useNotes();
@@ -44,6 +50,7 @@ export const NoteDetails = ({ note }: { note: Note }) => {
                     onChange={(e) => setNoteText(e.target.value)}
                     onBlur={saveNote}
                     value={noteText}
+                    autoFocus={autoFocus}
                 />
             </DetailsContainer>
         </GenericModal>
