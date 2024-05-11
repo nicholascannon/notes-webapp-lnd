@@ -22,7 +22,8 @@ export const CompactNote = ({
                     right: '-10px',
                     top: '-10px',
                 }}
-                onClick={() => {
+                onClick={(e) => {
+                    e.stopPropagation();
                     // TODO: should add confirmation modal here
                     deleteNote(note.id);
                 }}
