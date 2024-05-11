@@ -27,7 +27,7 @@ export const GenericModal = ({
 };
 
 const Overlay = styled.div(({ theme }) => ({
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
