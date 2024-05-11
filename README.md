@@ -12,8 +12,6 @@ It's meant to be a realistic example of production React apps depended on by bus
 
 ## How to run things
 
-### Bootstrap project
-
 Navigate to the `app` directory and install dependencies:
 
 ```bash
