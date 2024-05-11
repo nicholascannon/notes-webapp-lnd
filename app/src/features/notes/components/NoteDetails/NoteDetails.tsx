@@ -51,19 +51,20 @@ export const NoteDetails = ({ note }: { note: Note }) => {
 };
 
 const DetailsContainer = styled.div(({ theme }) => ({
-    backgroundColor: theme.colors.greys[2],
+    backgroundColor: theme.colors.greys[3],
+    border: `2px solid ${theme.colors.greys[2]}`,
+    borderRadius: theme.borderRadius.radii.lg,
 
     width: theme.sizes.lg,
     height: theme.sizes.md,
 
     // avoid overflow on small screens
     maxHeight: '100vh',
-    maxWidth: '100vw',
+    maxWidth: `calc(100vw - ${theme.sizes[16]})`,
 
     position: 'relative',
 
     padding: theme.sizes[8],
-    borderRadius: theme.borderRadius.radii.lg,
 }));
 
 const TextEditor = styled.textarea(({ theme }) => ({
@@ -75,6 +76,5 @@ const TextEditor = styled.textarea(({ theme }) => ({
     resize: 'none',
 
     border: 'none',
-    borderRadius: theme.borderRadius.radii.md,
     outline: 'none',
 }));
