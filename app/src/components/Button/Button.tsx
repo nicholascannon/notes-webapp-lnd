@@ -18,7 +18,7 @@ export const Button = (props: Props) => {
 type Props = ComponentProps<typeof StyledButton>;
 
 const StyledButton = styled(motion.button)<{
-    $variant?: ButtonVariant;
+    $variant?: 'PRIMARY' | 'SECONDARY';
     $size?: 'sm' | 'md';
 }>(({ theme, $variant, $size }) => ({
     cursor: 'pointer',
@@ -39,5 +39,3 @@ const StyledButton = styled(motion.button)<{
                 : theme.colors.greys[2],
     },
 }));
-
-type ButtonVariant = 'PRIMARY' | 'SECONDARY';
