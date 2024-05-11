@@ -48,7 +48,6 @@ const Container = styled.article(({ theme }) => ({
     cursor: 'pointer',
     userSelect: 'none',
 
-    width: theme.sizes.xs,
     height: theme.sizes['2xs'],
 
     p: {

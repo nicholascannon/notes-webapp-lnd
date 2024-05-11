@@ -99,6 +99,12 @@ export const theme = {
         toast: 1700,
         tooltip: 1800,
     },
+    breakpoints: {
+        sm: '480px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1200px',
+    },
 } as const;
 
 declare module '@emotion/react' {

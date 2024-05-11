@@ -66,10 +66,19 @@ const AnimatedList = ({
                 ease: 'easeOut',
             }}
             css={(theme) => ({
-                display: 'flex',
-                flexDirection: 'row',
-                flexFlow: 'wrap',
+                display: 'grid',
                 gap: theme.sizes[8],
+
+                gridTemplateColumns: '1fr',
+                [`@media (min-width: ${theme.breakpoints.md})`]: {
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                },
+                [`@media (min-width: ${theme.breakpoints.lg})`]: {
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                },
+                [`@media (min-width: ${theme.breakpoints.xl})`]: {
+                    gridTemplateColumns: 'repeat(4, 1fr)',
+                },
             })}
         >
             {children}
@@ -81,7 +90,7 @@ const AddNoteButton = ({ onClick }: { onClick: () => void }) => {
     return (
         <Button
             css={{
-                position: 'absolute',
+                position: 'fixed',
                 bottom: theme.sizes[16],
                 right: theme.sizes[16],
             }}
