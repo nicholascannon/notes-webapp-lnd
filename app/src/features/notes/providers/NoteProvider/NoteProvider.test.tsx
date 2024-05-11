@@ -26,11 +26,21 @@ describe('<NoteProvider />', () => {
     it('should add a note', async () => {
         const { result } = renderUseNotes();
 
-        act(() => result.current.addNote('My note'));
+        const note = await act(() => result.current.addNote('My note'));
 
-        const note = result.current.notes[0];
         expect(note.id).toMatch(UUID_REGEX);
         expect(note.text).toBe('My note');
+        expect(utils.getUUID).toHaveBeenCalled();
+        expect(note.lastUpdate.toDateString()).toBe('Mon Jan 01 2024');
+    });
+
+    it('should add a blank note', async () => {
+        const { result } = renderUseNotes();
+
+        const note = await act(() => result.current.addNote());
+
+        expect(note.id).toMatch(UUID_REGEX);
+        expect(note.text).toBe('');
         expect(utils.getUUID).toHaveBeenCalled();
         expect(note.lastUpdate.toDateString()).toBe('Mon Jan 01 2024');
     });

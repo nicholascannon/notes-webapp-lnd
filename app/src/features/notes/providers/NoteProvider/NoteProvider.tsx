@@ -20,16 +20,18 @@ export const NoteProvider = ({
     );
 
     // TODO: maybe make these stable refs with useCallback?
-    const addNote = (text: string) => {
+    const addNote = (text?: string): Note => {
         const newNote: Note = {
             id: getUUID(),
-            text,
+            text: text || '',
             lastUpdate: new Date(),
         };
         const updatedState = { ...notes, [newNote.id]: newNote };
 
         noteStorage.saveNotes(updatedState);
         setNotes(updatedState);
+
+        return newNote;
     };
 
     const getNote = (id: string) => notes[id];
@@ -82,7 +84,7 @@ const NoteContext = createContext<ContextState | undefined>(undefined);
 
 type ContextState = {
     notes: Note[];
-    addNote: (text: string) => void;
+    addNote: (text?: string) => Note;
     getNote: (id: string) => Note | undefined;
     deleteNote: (id: string) => Note | undefined;
     editNote: (id: string, text: string) => void;
