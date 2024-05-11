@@ -69,7 +69,7 @@ const AnimatedList = ({
                 display: 'grid',
                 gap: theme.sizes[8],
 
-                gridAutoRows: theme.sizes['2xs'],
+                gridAutoRows: theme.sizes['xs'],
 
                 gridTemplateColumns: '1fr',
                 [`@media (min-width: ${theme.breakpoints.md})`]: {
