@@ -7,7 +7,7 @@ https://notes.nicholascannon.com
 ### Motivation
 
 The codebase is built to scale to a larger application worked on by multiple people.
-This app is built with popular tools, not the hottest tools available (like vite and tailwindCSS).
+It's built with popular tools, not the hottest tools available (like vite and tailwindCSS).
 It's meant to be a realistic example of production React apps depended on by businesses.
 
 ## How to run things
