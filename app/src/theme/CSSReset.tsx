@@ -30,12 +30,15 @@ export const CSSReset = () => (
 
             /* Set core body defaults */
             body {
-                min-height: 100vh;
                 text-rendering: optimizeSpeed;
                 line-height: 1.5;
                 background-color: ${theme.colors.background};
                 font-family: ${theme.font};
                 position: relative;
+
+                min-height: 100vh;
+                max-width: 100vw;
+                overflow-x: hidden;
             }
 
             /* A elements that don't have a class get default styles */
@@ -56,10 +59,6 @@ export const CSSReset = () => (
             textarea,
             select {
                 font: inherit;
-            }
-
-            #root {
-                min-height: 100vh;
             }
 
             /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
