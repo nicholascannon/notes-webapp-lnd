@@ -7,7 +7,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
         <>
             {children}
             <Toaster
-                position="bottom-right"
+                position="bottom-left"
                 toastOptions={{
                     duration: 2_000,
                     style: {
