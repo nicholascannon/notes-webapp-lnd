@@ -48,7 +48,7 @@ const Container = styled.article(({ theme }) => ({
     cursor: 'pointer',
     userSelect: 'none',
 
-    height: theme.sizes['2xs'],
+    height: '100%',
 
     p: {
         overflow: 'hidden',
