@@ -19,6 +19,7 @@ type Props = ComponentProps<typeof StyledButton>;
 const StyledButton = styled(motion.button)<{ $variant?: ButtonVariant }>(
     ({ theme, $variant }) => ({
         cursor: 'pointer',
+        userSelect: 'none',
 
         borderRadius: theme.borderRadius.radii['3xl'],
         border: 'none',
