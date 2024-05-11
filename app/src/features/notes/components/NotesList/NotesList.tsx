@@ -97,6 +97,7 @@ const AddNoteButton = ({ onClick }: { onClick: () => void }) => {
                 right: theme.sizes[16],
             }}
             $variant="SECONDARY"
+            $size="md"
             onClick={onClick}
         >
             +
