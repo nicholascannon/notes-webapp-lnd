@@ -69,7 +69,7 @@ module.exports = {
             rules: {},
         },
     ],
-    ignorePatterns: ['node_modules/**', 'dist'],
+    ignorePatterns: ['node_modules/**', 'dist', 'public', 'coverage'],
     settings: {
         react: {
             version: 'detect',
