@@ -24,7 +24,7 @@ describe('<CompactNote />', () => {
     });
 
     it('should delete note when clicking close button', async () => {
-        await userEvent.click(screen.getByTestId('close-button'));
+        await userEvent.click(screen.getByTestId('delete-note-button'));
         expect(deleteNote).toHaveBeenCalled();
     });
 });

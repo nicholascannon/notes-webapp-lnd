@@ -15,8 +15,8 @@ export const CompactNote = ({
     return (
         <Container onClick={onClick}>
             <Button
-                className="close-button"
-                data-testid="close-button"
+                className="delete-note-button"
+                data-testid="delete-note-button"
                 style={{
                     position: 'absolute',
                     right: '-10px',
@@ -64,10 +64,10 @@ const Container = styled.article(({ theme }) => ({
         outline: 0,
     },
 
-    '& > .close-button': {
+    '& > .delete-note-button': {
         display: 'none',
     },
-    '&:hover > .close-button': {
+    '&:hover > .delete-note-button': {
         display: 'block',
     },
 }));
