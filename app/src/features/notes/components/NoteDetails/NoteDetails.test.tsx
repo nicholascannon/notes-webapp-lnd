@@ -59,5 +59,20 @@ describe('<NoteDetails />', () => {
             expect(editNote).not.toHaveBeenCalled();
             expect(addToast).not.toHaveBeenCalled();
         });
+
+        it('should add toast on error', async () => {
+            editNote.mockImplementationOnce(() => {
+                throw new Error();
+            });
+
+            const editor = screen.getByTestId('note-text-editor');
+
+            await userEvent.type(editor, ' is now updated');
+            fireEscapeKeyEvent(editor);
+
+            expect(addToast).toHaveBeenCalledWith(
+                "Failed to save, note doesn't exist",
+            );
+        });
     });
 });
