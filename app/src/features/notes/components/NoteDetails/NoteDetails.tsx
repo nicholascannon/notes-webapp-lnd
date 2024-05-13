@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Note } from '../..';
 import { useNotes } from '../../providers/NoteProvider/NoteProvider';
 import { Button } from '@/components/Button';
-import { GenericModal } from '@/components/GenericModal';
+import { Modal } from '@/components/Modal';
 import { addToast } from '@/providers/ToastProvider';
 
 export const NoteDetails = ({
@@ -30,7 +30,7 @@ export const NoteDetails = ({
     };
 
     return (
-        <GenericModal onModalClose={onClose}>
+        <Modal onModalClose={onClose}>
             <DetailsContainer>
                 <Button
                     $variant="SECONDARY"
@@ -53,7 +53,7 @@ export const NoteDetails = ({
                     autoFocus={autoFocus}
                 />
             </DetailsContainer>
-        </GenericModal>
+        </Modal>
     );
 };
 

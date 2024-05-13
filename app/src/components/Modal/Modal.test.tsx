@@ -1,15 +1,15 @@
 import { userEvent } from '@testing-library/user-event';
-import { GenericModal } from '.';
+import { Modal } from '.';
 import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';
 
-describe('<GenericModal />', () => {
+describe('<Modal />', () => {
     const onModalClose = jest.fn();
 
     beforeEach(() => {
         render(
-            <GenericModal onModalClose={onModalClose}>
+            <Modal onModalClose={onModalClose}>
                 <p>Content</p>
-            </GenericModal>,
+            </Modal>,
         );
     });
 
