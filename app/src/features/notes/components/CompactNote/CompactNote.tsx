@@ -17,7 +17,7 @@ export const CompactNote = ({
             <Button
                 className="delete-note-button"
                 data-testid="delete-note-button"
-                style={{
+                css={{
                     position: 'absolute',
                     right: '-10px',
                     top: '-10px',

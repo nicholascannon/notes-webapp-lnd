@@ -35,7 +35,7 @@ export const NoteDetails = ({
                 <Button
                     $variant="SECONDARY"
                     data-testid="close-button"
-                    style={{
+                    css={{
                         position: 'absolute',
                         right: '-10px',
                         top: '-10px',
