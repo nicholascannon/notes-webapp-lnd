@@ -58,6 +58,7 @@ npm run test
 -   Jest
 -   Testing library
 -   Knip
+-   Cypress
 
 ## Wireframe
 
