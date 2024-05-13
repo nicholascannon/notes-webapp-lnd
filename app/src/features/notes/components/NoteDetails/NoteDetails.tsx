@@ -37,7 +37,7 @@ export const NoteDetails = ({
         <Modal onModalClose={onClose}>
             <DetailsContainer>
                 <Button
-                    $variant="SECONDARY"
+                    variant="SECONDARY"
                     data-testid="close-button"
                     css={{
                         position: 'absolute',
