@@ -3,7 +3,7 @@ import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
 import { NoteDetails } from '.';
 import * as toasts from '@/providers/ToastProvider';
 import { mockNavigate } from '@/utils/mocks/navigate';
-import { fireEscapeKeyEvent, fireEvent, render, screen } from '@/utils/testing';
+import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';
 
 describe('<NoteDetails />', () => {
     const navigate = mockNavigate();
@@ -38,19 +38,6 @@ describe('<NoteDetails />', () => {
     });
 
     describe('edit note', () => {
-        it('should edit note on blur and add toast', async () => {
-            const editor = screen.getByTestId('note-text-editor');
-
-            await userEvent.type(editor, ' is now updated');
-            fireEvent.blur(editor);
-
-            expect(editNote).toHaveBeenCalledWith(
-                '1',
-                'My note is now updated',
-            );
-            expect(addToast).toHaveBeenCalledWith('Note saved!');
-        });
-
         it('should edit note on close and add toast', async () => {
             const editor = screen.getByTestId('note-text-editor');
 
@@ -67,7 +54,7 @@ describe('<NoteDetails />', () => {
         it('should not edit note and add toast if note content did not change', () => {
             const editor = screen.getByTestId('note-text-editor');
 
-            fireEvent.blur(editor);
+            fireEscapeKeyEvent(editor);
 
             expect(editNote).not.toHaveBeenCalled();
             expect(addToast).not.toHaveBeenCalled();

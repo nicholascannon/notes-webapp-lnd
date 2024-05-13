@@ -20,8 +20,12 @@ export const NoteDetails = ({
 
     const saveNote = () => {
         if (note.text === noteText) return;
-        editNote(note.id, noteText);
-        addToast('Note saved!');
+        try {
+            editNote(note.id, noteText);
+            addToast('Note saved!');
+        } catch (e) {
+            addToast("Failed to save, note doesn't exist");
+        }
     };
 
     const onClose = () => {
@@ -48,7 +52,6 @@ export const NoteDetails = ({
                 <TextEditor
                     data-testid="note-text-editor"
                     onChange={(e) => setNoteText(e.target.value)}
-                    onBlur={saveNote}
                     value={noteText}
                     autoFocus={autoFocus}
                 />
