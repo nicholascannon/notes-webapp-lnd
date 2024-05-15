@@ -1,5 +1,5 @@
-// must use long import here for spy to work :(
-import * as useNotes from '../NoteProvider';
+// can't use barrel import to spy
+import * as NoteProvider from '../NoteProvider';
 
 export const mockUseNotes = () => {
     const addNote = jest.fn();
@@ -7,7 +7,7 @@ export const mockUseNotes = () => {
     const deleteNote = jest.fn();
     const getNote = jest.fn();
 
-    jest.spyOn(useNotes, 'useNotes').mockImplementation(() => ({
+    jest.spyOn(NoteProvider, 'useNotes').mockImplementation(() => ({
         addNote,
         editNote,
         deleteNote,

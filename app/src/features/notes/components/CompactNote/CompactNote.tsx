@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useNotes } from '../../providers/NoteProvider/NoteProvider';
+import { useNotes } from '../..';
 import { Note } from '../../types';
 import { Button } from '@/components/Button';
 

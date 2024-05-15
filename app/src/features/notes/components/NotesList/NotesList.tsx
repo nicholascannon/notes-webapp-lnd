@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useNotes } from '../../providers/NoteProvider/NoteProvider';
+import { useNotes } from '../..';
 import { Note } from '../../types';
 import { CompactNote } from '../CompactNote';
 import { Button } from '@/components/Button';
