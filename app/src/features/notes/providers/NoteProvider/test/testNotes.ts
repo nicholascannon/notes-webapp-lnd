@@ -1,6 +1,6 @@
 import { Note } from '@/features/notes';
 
-export const TEST_NOTES: Note[] = [
+export const TEST_NOTES_LIST: Note[] = [
     {
         id: '1',
         lastUpdate: new Date(),
@@ -17,3 +17,11 @@ export const TEST_NOTES: Note[] = [
         text: 'Note 3',
     },
 ];
+
+export const TEST_NOTES_OBJECT = TEST_NOTES_LIST.reduce(
+    (notes, note) => ({
+        ...notes,
+        [note.id]: note,
+    }),
+    {},
+);
