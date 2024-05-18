@@ -107,9 +107,6 @@ describe('<NoteProvider />', () => {
                 initialNotes: TEST_NOTES_LIST,
             });
 
-            console.log(TEST_NOTES_LIST);
-            console.log(TEST_NOTES_OBJECT);
-
             const note = await act(() =>
                 result.current.deleteNote('does-not-exist'),
             );
