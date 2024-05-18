@@ -1,4 +1,4 @@
 {
-    "eslint.workingDirectories": ["app"],
+    "eslint.workingDirectories": ["app", "testing"],
     "typescript.preferences.importModuleSpecifier": "shortest"
 }
