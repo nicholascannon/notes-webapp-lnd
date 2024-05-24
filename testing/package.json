@@ -2,7 +2,8 @@
     "name": "testing",
     "scripts": {
         "start": "cypress open",
-        "lint": "eslint . --cache"
+        "lint": "eslint . --cache",
+        "lint:fix": "npm run lint -- --fix"
     },
     "dependencies": {
         "@testing-library/cypress": "^10.0.1",

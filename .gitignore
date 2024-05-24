@@ -1,6 +1,8 @@
 node_modules/
 dist/
 coverage/
+testing/cypress/screenshots/
+testing/cypress/videos/
 
 .eslintcache
 tsconfig.tsbuildinfo
