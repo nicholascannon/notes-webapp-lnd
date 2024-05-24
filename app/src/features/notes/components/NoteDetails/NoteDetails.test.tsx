@@ -25,7 +25,7 @@ describe('<NoteDetails />', () => {
     describe('modal close', () => {
         it('should navigate back to / when closing modal', async () => {
             // click outside modal
-            await userEvent.click(screen.getByTestId('generic-modal-overlay'));
+            await userEvent.click(screen.getByTestId('modal-overlay'));
 
             expect(navigate).toHaveBeenCalledWith('/');
         });

@@ -14,23 +14,23 @@ describe('<Modal />', () => {
     });
 
     it('should render modal and overlay', () => {
-        expect(screen.getByTestId('generic-modal-overlay')).toBeVisible();
-        expect(screen.getByTestId('generic-modal')).toBeVisible();
+        expect(screen.getByTestId('modal-overlay')).toBeVisible();
+        expect(screen.getByTestId('modal')).toBeVisible();
         expect(screen.getByText('Content')).toBeVisible();
     });
 
     it('should call onModalClose when clicking outside the modal', async () => {
-        await userEvent.click(screen.getByTestId('generic-modal'));
+        await userEvent.click(screen.getByTestId('modal'));
 
         expect(onModalClose).not.toHaveBeenCalled();
 
-        await userEvent.click(screen.getByTestId('generic-modal-overlay'));
+        await userEvent.click(screen.getByTestId('modal-overlay'));
 
         expect(onModalClose).toHaveBeenCalled();
     });
 
     it('should call onModalClose when pressing Escape key', () => {
-        const modal = screen.getByTestId('generic-modal');
+        const modal = screen.getByTestId('modal');
 
         fireEscapeKeyEvent(modal);
 

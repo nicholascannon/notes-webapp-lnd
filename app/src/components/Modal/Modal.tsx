@@ -13,9 +13,9 @@ export const Modal = ({
     const ref = useOnEscapeKey<HTMLDivElement>(onModalClose);
 
     return createPortal(
-        <Overlay data-testid="generic-modal-overlay" onClick={onModalClose}>
+        <Overlay data-testid="modal-overlay" onClick={onModalClose}>
             <div
-                data-testid="generic-modal"
+                data-testid="modal"
                 ref={ref}
                 onClick={(e) => e.stopPropagation()}
             >
