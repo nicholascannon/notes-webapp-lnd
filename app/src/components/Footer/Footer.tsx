@@ -5,7 +5,11 @@ export const Footer = () => {
         <StyledFooter>
             <p>
                 View the code{' '}
-                <a href="https://github.com/nicholascannon/notes-webapp-lnd">
+                <a
+                    href="https://github.com/nicholascannon/notes-webapp-lnd"
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     here
                 </a>
                 .
