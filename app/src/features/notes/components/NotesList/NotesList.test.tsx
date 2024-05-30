@@ -1,16 +1,12 @@
 import { userEvent } from '@testing-library/user-event';
-import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
 import { NotesList } from '.';
 import { mockNavigate } from '@/utils/mocks/navigate';
 import { render, screen } from '@/utils/testing';
 
 describe('<NotesList />', () => {
     const navigate = mockNavigate();
-    const { addNote } = mockUseNotes();
 
     beforeEach(() => {
-        addNote.mockReturnValue({ id: '1' });
-
         render(
             <NotesList
                 notes={[
@@ -29,14 +25,5 @@ describe('<NotesList />', () => {
     it('should navigate to note details on click', async () => {
         await userEvent.click(screen.getByText('Note 1'));
         expect(navigate).toHaveBeenCalledWith('/note/1');
-    });
-
-    it('should add blank note and navigate to details page', async () => {
-        await userEvent.click(screen.getByText('+'));
-
-        expect(addNote).toHaveBeenCalled();
-        expect(navigate).toHaveBeenCalledWith('/note/1', {
-            state: { autoFocus: true },
-        });
     });
 });

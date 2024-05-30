@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AddNoteButton } from '../components/AddNoteButton';
 import { NotesList } from '../components/NotesList';
 import { useNotes } from '../providers/NoteProvider/NoteProvider';
 import { NoteDetailsPage } from './NoteDetailsPage';
@@ -11,6 +12,8 @@ export const NotesPage = () => {
     return (
         <Layout>
             <NotesList notes={notes} enableInitAnimation={pathname === '/'} />
+
+            <AddNoteButton />
 
             <Routes>
                 <Route path="/note/:id" element={<NoteDetailsPage />} />
