@@ -19,8 +19,6 @@ describe('<AddNoteButton />', () => {
         await userEvent.click(screen.getByText('+'));
 
         expect(addNote).toHaveBeenCalled();
-        expect(navigate).toHaveBeenCalledWith('/note/1', {
-            state: { autoFocus: true },
-        });
+        expect(navigate).toHaveBeenCalledWith('/note/1');
     });
 });

@@ -17,7 +17,7 @@ export const AddNoteButton = () => {
             size="md"
             onClick={() => {
                 const { id } = addNote();
-                navigate(`/note/${id}`, { state: { autoFocus: true } });
+                navigate(`/note/${id}`);
             }}
         >
             +

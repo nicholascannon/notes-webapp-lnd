@@ -1,21 +1,16 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Note, useNotes } from '../..';
 import { Button } from '@/components/Button';
 import { Modal } from '@/components/Modal';
 import { addToast } from '@/providers/ToastProvider';
 
-export const NoteDetails = ({
-    note,
-    autoFocus,
-}: {
-    note: Note;
-    autoFocus?: boolean;
-}) => {
+export const NoteDetails = ({ note }: { note: Note }) => {
     const navigate = useNavigate();
     const [noteText, setNoteText] = useState(note.text);
     const { editNote } = useNotes();
+    const textAreaRef = useTextAreaFocus();
 
     const saveNote = () => {
         if (note.text === noteText) return;
@@ -52,11 +47,25 @@ export const NoteDetails = ({
                     data-testid="note-text-editor"
                     onChange={(e) => setNoteText(e.target.value)}
                     value={noteText}
-                    autoFocus={autoFocus}
+                    ref={textAreaRef}
                 />
             </DetailsContainer>
         </Modal>
     );
+};
+
+const useTextAreaFocus = () => {
+    const ref = useRef<HTMLTextAreaElement>(null);
+
+    useEffect(() => {
+        ref.current?.focus();
+        ref.current?.setSelectionRange(
+            ref.current.value.length,
+            ref.current.value.length,
+        );
+    }, [ref]);
+
+    return ref;
 };
 
 const DetailsContainer = styled.div(({ theme }) => ({
