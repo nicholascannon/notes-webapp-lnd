@@ -53,6 +53,7 @@ const Container = styled.article(({ theme }) => ({
     p: {
         overflow: 'hidden',
         height: '100%',
+        overflowWrap: 'anywhere',
     },
 
     '&:hover': {
