@@ -54,6 +54,10 @@ export const NoteDetails = ({ note }: { note: Note }) => {
     );
 };
 
+/**
+ * Focusses cursor to the end of the text content inside of
+ * a text area input.
+ */
 const useTextAreaFocus = () => {
     const ref = useRef<HTMLTextAreaElement>(null);
 
