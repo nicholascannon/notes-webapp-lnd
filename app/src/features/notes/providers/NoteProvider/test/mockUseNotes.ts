@@ -6,19 +6,23 @@ export const mockUseNotes = () => {
     const editNote = jest.fn();
     const deleteNote = jest.fn();
     const getNote = jest.fn();
+    const moveNotes = jest.fn();
 
     jest.spyOn(NoteProvider, 'useNotes').mockImplementation(() => ({
         addNote,
         editNote,
         deleteNote,
         getNote,
+        moveNotes,
         notes: [],
     }));
 
     return {
+        notes: [],
         addNote,
         editNote,
         deleteNote,
         getNote,
+        moveNotes,
     };
 };
