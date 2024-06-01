@@ -1,11 +1,12 @@
+import { Note } from '../..';
 import * as storage from '../../storage/noteStorage';
-import { NoteState, useNotes } from './NoteProvider';
-import { TEST_NOTES_LIST, TEST_NOTES_OBJECT } from './test/testNotes';
+import { useNotes } from './NoteProvider';
+import { TEST_NOTES_LIST } from './test/testNotes';
 import { NoteProvider } from '.';
 import * as utils from '@/utils/getUUID';
 import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
-const renderUseNotes = (options?: { initialNotes?: NoteState }) => {
+const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
     return renderHook(() => useNotes(), {
         wrapper: ({ children }) => (
             <NoteProvider initialNotes={options?.initialNotes}>
@@ -34,7 +35,7 @@ describe('<NoteProvider />', () => {
             expect(note.text).toBe('My note');
             expect(utils.getUUID).toHaveBeenCalled();
             expect(note.lastUpdate.toDateString()).toBe('Mon Jan 01 2024');
-            expect(storage.saveNotes).toHaveBeenCalledWith({ [note.id]: note });
+            expect(storage.saveNotes).toHaveBeenCalledWith([note]);
         });
 
         it('should add a blank note', async () => {
@@ -46,14 +47,14 @@ describe('<NoteProvider />', () => {
             expect(note.text).toBe('');
             expect(utils.getUUID).toHaveBeenCalled();
             expect(note.lastUpdate.toDateString()).toBe('Mon Jan 01 2024');
-            expect(storage.saveNotes).toHaveBeenCalledWith({ [note.id]: note });
+            expect(storage.saveNotes).toHaveBeenCalledWith([note]);
         });
     });
 
     describe('getting notes', () => {
         it('should return a list of notes', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
 
             expect(result.current.notes).toStrictEqual(TEST_NOTES_LIST);
@@ -61,7 +62,7 @@ describe('<NoteProvider />', () => {
 
         it('should get a note by id', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
             const note = TEST_NOTES_LIST[0];
 
@@ -70,7 +71,7 @@ describe('<NoteProvider />', () => {
 
         it('should return undefined if note does not exist', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
 
             expect(result.current.getNote('does-note-exist')).toBeUndefined();
@@ -80,7 +81,7 @@ describe('<NoteProvider />', () => {
     describe('deleting notes', () => {
         it('should delete a note and return it', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
 
             const note = await act(() =>
@@ -91,19 +92,14 @@ describe('<NoteProvider />', () => {
             expect(result.current.notes).toStrictEqual(
                 TEST_NOTES_LIST.slice(1),
             );
-            expect(storage.saveNotes).toHaveBeenCalledWith({
-                [TEST_NOTES_LIST[1].id]: {
-                    ...TEST_NOTES_LIST[1],
-                },
-                [TEST_NOTES_LIST[2].id]: {
-                    ...TEST_NOTES_LIST[2],
-                },
-            });
+            expect(storage.saveNotes).toHaveBeenCalledWith(
+                TEST_NOTES_LIST.slice(1),
+            );
         });
 
         it('should do nothing when deleting a note that does not exist', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
 
             const note = await act(() =>
@@ -112,14 +108,13 @@ describe('<NoteProvider />', () => {
 
             expect(note).toBeUndefined();
             expect(result.current.notes).toStrictEqual(TEST_NOTES_LIST);
-            expect(storage.saveNotes).toHaveBeenCalledWith(TEST_NOTES_OBJECT);
         });
     });
 
     describe('editing notes', () => {
         it('should edit a note and return it', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_OBJECT,
+                initialNotes: TEST_NOTES_LIST,
             });
 
             act(() => result.current.editNote('1', 'Updated'));

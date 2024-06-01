@@ -9,10 +9,10 @@ describe('noteStorage', () => {
     });
 
     it('should save notes', () => {
-        const notes = {
-            '1': { id: '1', lastUpdate: new Date(), text: 'My note' },
-            '2': { id: '2', lastUpdate: new Date(), text: 'My note 2' },
-        };
+        const notes = [
+            { id: '1', lastUpdate: new Date(), text: 'My note' },
+            { id: '2', lastUpdate: new Date(), text: 'My note 2' },
+        ];
 
         saveNotes(notes);
 
@@ -23,10 +23,10 @@ describe('noteStorage', () => {
     });
 
     it('should get notes', () => {
-        const notes = {
-            '1': { id: '1', lastUpdate: new Date(), text: 'My note' },
-            '2': { id: '2', lastUpdate: new Date(), text: 'My note 2' },
-        };
+        const notes = [
+            { id: '1', lastUpdate: new Date(), text: 'My note' },
+            { id: '2', lastUpdate: new Date(), text: 'My note 2' },
+        ];
 
         saveNotes(notes);
 
@@ -34,6 +34,6 @@ describe('noteStorage', () => {
     });
 
     it('should return an empty list when theres no notes', () => {
-        expect(getNotes()).toStrictEqual({});
+        expect(getNotes()).toStrictEqual([]);
     });
 });

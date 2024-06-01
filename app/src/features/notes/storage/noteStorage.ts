@@ -7,28 +7,23 @@
  * and another structure is needed to keep the ordering of the notes.
  */
 import { Note } from '..';
-import { NoteState } from '../providers/NoteProvider/NoteProvider';
 
 const STORAGE_KEY = 'notes_app_data';
-const EMPTY_SERIALIZED_STATE = '{}';
+const EMPTY_SERIALIZED_STATE = '[]';
 
 type StorageNote = Note & {
     lastUpdate: string; // Date gets serialized to a string when saved to localStorage
 };
 
-type StorageState = Record<string, StorageNote>;
-
-export const saveNotes = (notes: NoteState) => {
+export const saveNotes = (notes: Note[]) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
 };
 
-export const getNotes = (): NoteState => {
-    const rawState: StorageState = JSON.parse(
+export const getNotes = (): Note[] => {
+    const rawState: StorageNote[] = JSON.parse(
         localStorage.getItem(STORAGE_KEY) || EMPTY_SERIALIZED_STATE,
     );
-    return Object.values(rawState)
-        .map(mapToNote)
-        .reduce((notes, note) => ({ ...notes, [note.id]: note }), {});
+    return rawState.map(mapToNote);
 };
 
 const mapToNote = (storageNote: StorageNote): Note => ({

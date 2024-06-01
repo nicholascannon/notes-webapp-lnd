@@ -5,58 +5,60 @@ import { getUUID } from '@/utils/getUUID';
 
 export const NoteProvider = ({
     children,
-    initialNotes,
+    initialNotes = [],
 }: {
     children: ReactNode;
-    initialNotes?: NoteState;
+    initialNotes?: Note[];
 }) => {
-    const [notes, setNotes] = useState<NoteState>(initialNotes || {});
+    const [notes, setNotes] = useState<Note[]>(initialNotes);
 
-    const saveNotes = (notes: NoteState) => {
+    const saveNotes = (notes: Note[]) => {
         noteStorage.saveNotes(notes);
         setNotes(notes);
     };
 
     // TODO: maybe make these stable refs with useCallback?
     const addNote = (text?: string): Note => {
-        const newNote: Note = {
+        const note: Note = {
             id: getUUID(),
             text: text || '',
             lastUpdate: new Date(),
         };
-        saveNotes({ ...notes, [newNote.id]: newNote });
-        return newNote;
+        saveNotes([...notes, note]);
+        return note;
     };
 
-    const getNote = (id: string) => notes[id];
+    const getNote = (id: string) => notes.find((note) => note.id === id);
 
     const deleteNote = (id: string) => {
-        const { [id]: deleted, ...updatedState } = notes;
-        saveNotes(updatedState);
-        return deleted;
+        const note = getNote(id);
+        if (!note) return undefined;
+
+        saveNotes(notes.filter((note) => note.id !== id));
+        return note;
     };
 
     const editNote = (id: string, text: string) => {
-        if (!notes[id]) {
+        const noteIndex = notes.findIndex((note) => note.id === id);
+        if (noteIndex === -1) {
             throw new Error(
                 `Unable to edit note: note with id ${id} does not exist`,
             );
         }
 
-        saveNotes({
-            ...notes,
-            [id]: {
-                ...notes[id],
-                text,
-                lastUpdate: new Date(),
-            },
-        });
+        const updatedNotes = [...notes];
+        updatedNotes[noteIndex] = {
+            ...updatedNotes[noteIndex],
+            text,
+            lastUpdate: new Date(),
+        };
+        saveNotes(updatedNotes);
     };
 
     return (
         <NoteContext.Provider
             value={{
-                notes: Object.values(notes),
+                notes,
                 addNote,
                 getNote,
                 deleteNote,
@@ -67,8 +69,6 @@ export const NoteProvider = ({
         </NoteContext.Provider>
     );
 };
-
-export type NoteState = Record<string, Note>;
 
 const NoteContext = createContext<ContextState | undefined>(undefined);
 
