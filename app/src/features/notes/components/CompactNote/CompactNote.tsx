@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useNotes } from '../..';
 import { Note } from '../../types';
 import { Button } from '@/components/Button';
+import { useTruncateText } from '@/hooks/useTruncateText';
 
 export const CompactNote = ({
     note,
@@ -11,6 +12,7 @@ export const CompactNote = ({
     onClick?: () => void;
 }) => {
     const { deleteNote } = useNotes();
+    const truncateTextRef = useTruncateText<HTMLParagraphElement>();
 
     return (
         <Container onClick={onClick}>
@@ -31,10 +33,21 @@ export const CompactNote = ({
                 x
             </Button>
 
-            <p>{note.text}</p>
+            <ContentWrapper>
+                <p ref={truncateTextRef}>{note.text}</p>
+            </ContentWrapper>
         </Container>
     );
 };
+
+const ContentWrapper = styled.div({
+    overflow: 'hidden',
+    height: '100%',
+
+    p: {
+        overflowWrap: 'anywhere',
+    },
+});
 
 const Container = styled.article(({ theme }) => ({
     position: 'relative',
@@ -49,12 +62,6 @@ const Container = styled.article(({ theme }) => ({
     userSelect: 'none',
 
     height: '100%',
-
-    p: {
-        overflow: 'hidden',
-        height: '100%',
-        overflowWrap: 'anywhere',
-    },
 
     '&:hover': {
         backgroundColor: theme.colors.greys[3],
