@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ToastProvider } from './ToastProvider';
 import { AnimationConfig } from '@/config/animations';
 import { NoteProvider, getNotes } from '@/features/notes';
@@ -11,7 +13,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         <AnimationConfig>
             <ThemeProvider>
                 <ToastProvider>
-                    <NoteProvider initialNotes={NOTES}>{children}</NoteProvider>
+                    <DndProvider backend={HTML5Backend}>
+                        <NoteProvider initialNotes={NOTES}>
+                            {children}
+                        </NoteProvider>
+                    </DndProvider>
                 </ToastProvider>
             </ThemeProvider>
         </AnimationConfig>

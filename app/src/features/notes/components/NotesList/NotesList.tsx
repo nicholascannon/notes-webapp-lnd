@@ -28,10 +28,11 @@ export const NotesList = ({
 
     return (
         <AnimatedList enableInitAnimation={enableInitAnimation}>
-            {notes.map((note) => (
+            {notes.map((note, index) => (
                 <li key={note.id} data-testid="compact-note">
                     <CompactNote
                         note={note}
+                        dropIndex={index}
                         onClick={() => navigate(`/note/${note.id}`)}
                     />
                 </li>

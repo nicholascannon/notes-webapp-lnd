@@ -1,21 +1,29 @@
 import styled from '@emotion/styled';
 import { useNotes } from '../..';
+import { useDragAndDropNote } from '../../hooks/useDragAndDropNote';
 import { Note } from '../../types';
 import { Button } from '@/components/Button';
 import { useTruncateText } from '@/hooks/useTruncateText';
 
 export const CompactNote = ({
     note,
+    dropIndex,
     onClick,
 }: {
     note: Note;
+    dropIndex?: number;
     onClick?: () => void;
 }) => {
     const { deleteNote } = useNotes();
     const truncateTextRef = useTruncateText<HTMLParagraphElement>();
+    const { dragRef, dropRef, isDragging } = useDragAndDropNote(dropIndex);
+
+    if (isDragging) return <Container data-testid="drag-container" />;
 
     return (
-        <Container onClick={onClick}>
+        <Container ref={dragRef} onClick={onClick}>
+            <InvisibleDropZone ref={dropRef} />
+
             <Button
                 className="delete-note-button"
                 data-testid="delete-note-button"
@@ -39,6 +47,14 @@ export const CompactNote = ({
         </Container>
     );
 };
+
+const InvisibleDropZone = styled.div({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+});
 
 const ContentWrapper = styled.div({
     overflow: 'hidden',

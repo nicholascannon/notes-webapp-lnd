@@ -4,6 +4,7 @@ module.exports = {
     transform: {
         '\\.[jt]sx?$': 'babel-jest',
     },
+    transformIgnorePatterns: ['node_modules/(?!react-dnd)/'],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
     },
