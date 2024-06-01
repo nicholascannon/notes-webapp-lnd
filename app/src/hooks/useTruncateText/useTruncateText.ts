@@ -34,5 +34,5 @@ const getContentHeight = (element: HTMLElement): number => {
     const paddingTop = parseInt(style.paddingTop, 10);
     const paddingBottom = parseInt(style.paddingBottom, 10);
     const contentHeight = element.offsetHeight - paddingTop - paddingBottom;
-    return contentHeight;
+    return contentHeight || 0;
 };
