@@ -19,6 +19,11 @@ export const NoteProvider = ({
             : {},
     );
 
+    const saveNotes = (notes: NoteState) => {
+        noteStorage.saveNotes(notes);
+        setNotes(notes);
+    };
+
     // TODO: maybe make these stable refs with useCallback?
     const addNote = (text?: string): Note => {
         const newNote: Note = {
@@ -26,11 +31,7 @@ export const NoteProvider = ({
             text: text || '',
             lastUpdate: new Date(),
         };
-        const updatedState = { ...notes, [newNote.id]: newNote };
-
-        noteStorage.saveNotes(updatedState);
-        setNotes(updatedState);
-
+        saveNotes({ ...notes, [newNote.id]: newNote });
         return newNote;
     };
 
@@ -38,10 +39,7 @@ export const NoteProvider = ({
 
     const deleteNote = (id: string) => {
         const { [id]: deleted, ...updatedState } = notes;
-
-        noteStorage.saveNotes(updatedState);
-        setNotes(updatedState);
-
+        saveNotes(updatedState);
         return deleted;
     };
 
@@ -52,15 +50,14 @@ export const NoteProvider = ({
             );
         }
 
-        const updatedNote: Note = {
-            ...notes[id],
-            text,
-            lastUpdate: new Date(),
-        };
-        const updatedState = { ...notes, [updatedNote.id]: updatedNote };
-
-        noteStorage.saveNotes(updatedState);
-        setNotes(updatedState);
+        saveNotes({
+            ...notes,
+            [id]: {
+                ...notes[id],
+                text,
+                lastUpdate: new Date(),
+            },
+        });
     };
 
     return (
