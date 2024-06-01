@@ -8,16 +8,9 @@ export const NoteProvider = ({
     initialNotes,
 }: {
     children: ReactNode;
-    initialNotes?: Note[];
+    initialNotes?: NoteState;
 }) => {
-    const [notes, setNotes] = useState<NoteState>(
-        initialNotes
-            ? initialNotes.reduce(
-                  (notes, note) => ({ ...notes, [note.id]: note }),
-                  {},
-              )
-            : {},
-    );
+    const [notes, setNotes] = useState<NoteState>(initialNotes || {});
 
     const saveNotes = (notes: NoteState) => {
         noteStorage.saveNotes(notes);

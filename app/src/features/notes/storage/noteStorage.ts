@@ -22,11 +22,13 @@ export const saveNotes = (notes: NoteState) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
 };
 
-export const getNotes = (): Note[] => {
+export const getNotes = (): NoteState => {
     const rawState: StorageState = JSON.parse(
         localStorage.getItem(STORAGE_KEY) || EMPTY_SERIALIZED_STATE,
     );
-    return Object.values(rawState).map(mapToNote);
+    return Object.values(rawState)
+        .map(mapToNote)
+        .reduce((notes, note) => ({ ...notes, [note.id]: note }), {});
 };
 
 const mapToNote = (storageNote: StorageNote): Note => ({

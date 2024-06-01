@@ -30,10 +30,10 @@ describe('noteStorage', () => {
 
         saveNotes(notes);
 
-        expect(getNotes()).toStrictEqual(Object.values(notes));
+        expect(getNotes()).toStrictEqual(notes);
     });
 
     it('should return an empty list when theres no notes', () => {
-        expect(getNotes()).toStrictEqual([]);
+        expect(getNotes()).toStrictEqual({});
     });
 });

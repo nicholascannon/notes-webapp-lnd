@@ -1,12 +1,11 @@
-import { Note } from '../..';
 import * as storage from '../../storage/noteStorage';
-import { useNotes } from './NoteProvider';
+import { NoteState, useNotes } from './NoteProvider';
 import { TEST_NOTES_LIST, TEST_NOTES_OBJECT } from './test/testNotes';
 import { NoteProvider } from '.';
 import * as utils from '@/utils/getUUID';
 import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
-const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
+const renderUseNotes = (options?: { initialNotes?: NoteState }) => {
     return renderHook(() => useNotes(), {
         wrapper: ({ children }) => (
             <NoteProvider initialNotes={options?.initialNotes}>
@@ -54,7 +53,7 @@ describe('<NoteProvider />', () => {
     describe('getting notes', () => {
         it('should return a list of notes', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
 
             expect(result.current.notes).toStrictEqual(TEST_NOTES_LIST);
@@ -62,7 +61,7 @@ describe('<NoteProvider />', () => {
 
         it('should get a note by id', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
             const note = TEST_NOTES_LIST[0];
 
@@ -71,7 +70,7 @@ describe('<NoteProvider />', () => {
 
         it('should return undefined if note does not exist', () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
 
             expect(result.current.getNote('does-note-exist')).toBeUndefined();
@@ -81,7 +80,7 @@ describe('<NoteProvider />', () => {
     describe('deleting notes', () => {
         it('should delete a note and return it', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
 
             const note = await act(() =>
@@ -104,7 +103,7 @@ describe('<NoteProvider />', () => {
 
         it('should do nothing when deleting a note that does not exist', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
 
             const note = await act(() =>
@@ -120,7 +119,7 @@ describe('<NoteProvider />', () => {
     describe('editing notes', () => {
         it('should edit a note and return it', async () => {
             const { result } = renderUseNotes({
-                initialNotes: TEST_NOTES_LIST,
+                initialNotes: TEST_NOTES_OBJECT,
             });
 
             act(() => result.current.editNote('1', 'Updated'));
