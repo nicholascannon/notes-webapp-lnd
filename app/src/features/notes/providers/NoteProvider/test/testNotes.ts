@@ -17,11 +17,3 @@ export const TEST_NOTES_LIST: Note[] = [
         text: 'Note 3',
     },
 ];
-
-export const TEST_NOTES_OBJECT = TEST_NOTES_LIST.reduce(
-    (notes, note) => ({
-        ...notes,
-        [note.id]: note,
-    }),
-    {},
-);

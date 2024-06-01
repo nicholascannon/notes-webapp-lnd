@@ -55,6 +55,20 @@ export const NoteProvider = ({
         saveNotes(updatedNotes);
     };
 
+    const moveNotes = (from: number, to: number) => {
+        const maxPosition = notes.length - 1;
+        if (from < 0 || to < 0 || from > maxPosition || to > maxPosition) {
+            return;
+        }
+
+        const updatedNotes = [...notes];
+        [updatedNotes[from], updatedNotes[to]] = [
+            updatedNotes[to],
+            updatedNotes[from],
+        ];
+        saveNotes(updatedNotes);
+    };
+
     return (
         <NoteContext.Provider
             value={{
@@ -63,6 +77,7 @@ export const NoteProvider = ({
                 getNote,
                 deleteNote,
                 editNote,
+                moveNotes,
             }}
         >
             {children}
@@ -78,6 +93,7 @@ type ContextState = {
     getNote: (id: string) => Note | undefined;
     deleteNote: (id: string) => Note | undefined;
     editNote: (id: string, text: string) => void;
+    moveNotes: (from: number, to: number) => void;
 };
 
 export const useNotes = () => {

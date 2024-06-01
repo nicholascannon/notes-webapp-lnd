@@ -137,4 +137,33 @@ describe('<NoteProvider />', () => {
             expect(storage.saveNotes).not.toHaveBeenCalled();
         });
     });
+
+    describe('moving notes', () => {
+        it('should swap the first and last notes', () => {
+            const { result } = renderUseNotes({
+                initialNotes: TEST_NOTES_LIST,
+            });
+
+            act(() => result.current.moveNotes(2, 0));
+
+            expect(result.current.notes).toStrictEqual([
+                TEST_NOTES_LIST[2],
+                TEST_NOTES_LIST[1],
+                TEST_NOTES_LIST[0],
+            ]);
+        });
+
+        it('should do nothing if positions are out of bounds', () => {
+            const { result } = renderUseNotes({
+                initialNotes: TEST_NOTES_LIST,
+            });
+
+            act(() => result.current.moveNotes(2, -1));
+            act(() => result.current.moveNotes(-2, 1));
+            act(() => result.current.moveNotes(3, 1));
+            act(() => result.current.moveNotes(1, 3));
+
+            expect(result.current.notes).toStrictEqual(TEST_NOTES_LIST);
+        });
+    });
 });
