@@ -4,10 +4,12 @@ A simple web based note taking application.
 
 https://notes.nicholascannon.com
 
+Want to see a version using Webpack, Babel and Jest?
+See [this branch](https://github.com/nicholascannon/notes-webapp-lnd/tree/webpack-babel-jest).
+
 ### Motivation
 
 The codebase is built to scale to a larger application worked on by multiple people.
-It's built with popular tools, not the hottest tools available (like vite and tailwindCSS).
 It's meant to be a realistic example of production React apps depended on by businesses.
 
 ## How to run things
@@ -45,17 +47,17 @@ npm run test
 -   React
 -   Emotion
 -   Framer motion
+-   React DnD
 
 ### Tooling stack
 
--   Webpack
--   Babel
+-   Vite
+-   Vitest
 -   TypeScript
 -   Eslint
 -   Prettier
 -   Lint staged
 -   Husky
--   Jest
 -   Testing library
 -   Knip
 -   Cypress
