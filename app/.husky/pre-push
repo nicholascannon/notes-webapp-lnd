@@ -1,5 +1,4 @@
 cd app
 
-
 npm run build
-CI=true && npm run test -- --run
+npm run test -- --run
