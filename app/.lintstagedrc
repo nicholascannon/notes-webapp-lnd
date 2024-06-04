@@ -1,5 +1,5 @@
 {
     "*.{ts,js,tsx,jsx,json}": "eslint --cache --fix",
     "*.html": "prettier --write",
-    "*.test.{ts,tsx}": "jest"
+    "*.test.{ts,tsx}": "vitest run"
 }

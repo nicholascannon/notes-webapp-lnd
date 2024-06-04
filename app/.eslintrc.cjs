@@ -58,9 +58,10 @@ module.exports = {
     overrides: [
         {
             // Config Files
-            files: '*.js',
+            files: ['*.js', 'vite.config.ts'],
             rules: {
                 '@typescript-eslint/no-var-requires': 'off',
+                'import/no-default-export': 'off',
             },
         },
         {

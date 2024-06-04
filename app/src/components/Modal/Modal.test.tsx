@@ -3,7 +3,7 @@ import { Modal } from '.';
 import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';
 
 describe('<Modal />', () => {
-    const onModalClose = jest.fn();
+    const onModalClose = vi.fn();
 
     beforeEach(() => {
         render(

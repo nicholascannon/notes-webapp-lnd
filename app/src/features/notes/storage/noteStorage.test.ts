@@ -2,8 +2,8 @@ import { getNotes, saveNotes } from './noteStorage';
 
 describe('noteStorage', () => {
     beforeEach(() => {
-        jest.spyOn(Storage.prototype, 'setItem');
-        jest.spyOn(Storage.prototype, 'getItem');
+        vi.spyOn(Storage.prototype, 'setItem');
+        vi.spyOn(Storage.prototype, 'getItem');
 
         localStorage.clear();
     });
