@@ -7,7 +7,7 @@ import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';
 
 describe('<NoteDetails />', () => {
     const navigate = mockNavigate();
-    const addToast = jest.spyOn(toasts, 'addToast');
+    const addToast = vi.spyOn(toasts, 'addToast');
     const { editNote } = mockUseNotes();
 
     beforeEach(() => {

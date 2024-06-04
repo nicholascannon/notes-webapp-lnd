@@ -1,15 +1,16 @@
 import { userEvent } from '@testing-library/user-event';
+import { Mock } from 'vitest';
 import { useOnEscapeKey } from '.';
 import { fireEscapeKeyEvent, fireEvent, render, screen } from '@/utils/testing';
 
-const TestComponent = ({ fn }: { fn: jest.Mock }) => {
+const TestComponent = ({ fn }: { fn: Mock }) => {
     const ref = useOnEscapeKey<HTMLDivElement>(fn);
     return <div ref={ref} data-testid="container"></div>;
 };
 
 describe('useOnEscapeKey', () => {
     it('should run function when escape key pressed', async () => {
-        const onEscapeMock = jest.fn();
+        const onEscapeMock = vi.fn();
         render(<TestComponent fn={onEscapeMock} />);
 
         const container = screen.getByTestId('container');
@@ -19,7 +20,7 @@ describe('useOnEscapeKey', () => {
     });
 
     it('should not run when other keys are pressed', () => {
-        const onEscapeMock = jest.fn();
+        const onEscapeMock = vi.fn();
         render(<TestComponent fn={onEscapeMock} />);
 
         const container = screen.getByTestId('container');

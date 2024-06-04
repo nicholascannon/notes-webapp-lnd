@@ -18,9 +18,9 @@ const renderUseNotes = (options?: { initialNotes?: Note[] }) => {
 
 describe('<NoteProvider />', () => {
     beforeEach(() => {
-        jest.useFakeTimers().setSystemTime(new Date('2024-01-01'));
-        jest.spyOn(utils, 'getUUID');
-        jest.spyOn(storage, 'saveNotes');
+        vi.useFakeTimers().setSystemTime(new Date('2024-01-01'));
+        vi.spyOn(utils, 'getUUID');
+        vi.spyOn(storage, 'saveNotes');
 
         localStorage.clear();
     });

@@ -15,7 +15,8 @@
         "paths": {
             "@/*": ["./src/*"]
         },
-        "incremental": true
+        "incremental": true,
+        "types": ["vitest/globals"]
     },
     "include": ["./src"]
 }
