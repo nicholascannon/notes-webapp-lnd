@@ -9,7 +9,7 @@ export const NotesTutorial = () => {
             })}
         >
             <h1>Press + to add a note</h1>
-            <p>Then click and drag notes to re-arrange them.</p>
+            <p>Then click and drag notes to re-arrange them</p>
         </div>
     );
 };
