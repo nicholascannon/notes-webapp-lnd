@@ -28,14 +28,4 @@ describe('<NotesList />', () => {
             expect(navigate).toHaveBeenCalledWith('/note/1');
         });
     });
-
-    describe('without notes', () => {
-        beforeEach(() => {
-            render(<NotesList notes={[]} />);
-        });
-
-        it('should render help text', () => {
-            expect(screen.getByText('Press + to add a note')).toBeVisible();
-        });
-    });
 });

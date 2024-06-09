@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AddNoteButton } from '../components/AddNoteButton';
 import { NotesList } from '../components/NotesList';
+import { NotesTutorial } from '../components/NotesTutorial';
 import { useNotes } from '../providers/NoteProvider/NoteProvider';
 import { NoteDetailsPage } from './NoteDetailsPage';
 import { Layout } from '@/components/Layout';
@@ -11,7 +12,14 @@ export const NotesPage = () => {
 
     return (
         <Layout>
-            <NotesList notes={notes} enableInitAnimation={pathname === '/'} />
+            {notes.length > 0 ? (
+                <NotesList
+                    notes={notes}
+                    enableInitAnimation={pathname === '/'}
+                />
+            ) : (
+                <NotesTutorial />
+            )}
 
             <AddNoteButton />
 

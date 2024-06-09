@@ -13,19 +13,6 @@ export const NotesList = ({
 }) => {
     const navigate = useNavigate();
 
-    if (notes.length === 0) {
-        return (
-            <h1
-                css={(theme) => ({
-                    textAlign: 'center',
-                    color: theme.colors.greys[0],
-                })}
-            >
-                Press + to add a note
-            </h1>
-        );
-    }
-
     return (
         <AnimatedList enableInitAnimation={enableInitAnimation}>
             {notes.map((note, index) => (
