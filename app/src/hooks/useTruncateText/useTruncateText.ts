@@ -5,12 +5,14 @@ import shave from 'shave';
 /**
  * Truncate text if it exceeds parent element's height.
  */
-export const useTruncateText = <T extends HTMLElement>() => {
+export const useTruncateText = <T extends HTMLElement>(
+    debounceLatency = 25,
+) => {
     const ref = useRef<T | null>(null);
 
     useEffect(() => {
         const observer = new ResizeObserver(
-            debounce((entries) => {
+            debounce<ResizeObserverCallback>((entries) => {
                 const element = entries[0].target;
                 const parentElement = element.parentElement;
 
@@ -19,12 +21,12 @@ export const useTruncateText = <T extends HTMLElement>() => {
                         spaces: false,
                     });
                 }
-            }, 25),
+            }, debounceLatency),
         );
 
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
-    }, []);
+    }, [debounceLatency]);
 
     return ref;
 };
