@@ -15,11 +15,11 @@ export const useDragAndDropNote = (dropIndex?: number) => {
 
     const [_, dropRef] = useDrop<DragObject>({
         accept: ITEM_TYPE,
-        drop: (item) => {
-            if (dropIndex === undefined || item.fromIndex === undefined) {
+        drop: ({ fromIndex }) => {
+            if (dropIndex === undefined || fromIndex === undefined) {
                 return;
             }
-            moveNotes(item.fromIndex, dropIndex);
+            moveNotes(fromIndex, dropIndex);
         },
     });
 
