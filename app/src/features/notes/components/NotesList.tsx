@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Note } from '../../types';
-import { CompactNote } from '../CompactNote';
+import { Note } from '../types';
+import { CompactNote } from './CompactNote';
 
 export const NotesList = ({
     notes,

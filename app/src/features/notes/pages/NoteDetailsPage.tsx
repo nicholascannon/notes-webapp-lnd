@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { NoteDetails } from '../components/NoteDetails';
-import { useNotes } from '../providers/NoteProvider/NoteProvider';
+import { useNotes } from '../providers/NoteProvider';
 
 export const NoteDetailsPage = () => {
     const { id } = useParams<{ id: string }>();

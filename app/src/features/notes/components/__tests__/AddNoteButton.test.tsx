@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
-import { AddNoteButton } from '.';
+import { mockUseNotes } from '../../utils/mockUseNotes';
+import { AddNoteButton } from '../AddNoteButton';
 import { mockNavigate } from '@/utils/mocks/navigate';
 import { render } from '@/utils/testing';
 

@@ -2,7 +2,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AddNoteButton } from '../components/AddNoteButton';
 import { NotesList } from '../components/NotesList';
 import { NotesTutorial } from '../components/NotesTutorial';
-import { useNotes } from '../providers/NoteProvider/NoteProvider';
+import { useNotes } from '../providers/NoteProvider';
 import { NoteDetailsPage } from './NoteDetailsPage';
 import { Layout } from '@/components/Layout';
 

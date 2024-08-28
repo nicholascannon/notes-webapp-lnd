@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { useNotes } from '../..';
-import { useDragAndDropNote } from '../../hooks/useDragAndDropNote';
-import { Note } from '../../types';
+import { useDragAndDropNote } from '../hooks/useDragAndDropNote';
+import { useNotes } from '../providers/NoteProvider';
+import { Note } from '../types';
 import { Button } from '@/components/Button';
 import { useTruncateText } from '@/hooks/useTruncateText';
 

@@ -1,6 +1,6 @@
 import { userEvent } from '@testing-library/user-event';
-import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
-import { NoteDetails } from '.';
+import { mockUseNotes } from '../../utils/mockUseNotes';
+import { NoteDetails } from '../NoteDetails';
 import * as toasts from '@/providers/ToastProvider';
 import { mockNavigate } from '@/utils/mocks/navigate';
 import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';

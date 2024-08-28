@@ -1,5 +1,5 @@
 import { userEvent } from '@testing-library/user-event';
-import { Modal } from '.';
+import { Modal } from '../Modal';
 import { fireEscapeKeyEvent, render, screen } from '@/utils/testing';
 
 describe('<Modal />', () => {

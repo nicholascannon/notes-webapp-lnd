@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Note, useNotes } from '../..';
+import { useNotes } from '../providers/NoteProvider';
+import { Note } from '../types';
 import { Button } from '@/components/Button';
 import { Modal } from '@/components/Modal';
 import { addToast } from '@/providers/ToastProvider';

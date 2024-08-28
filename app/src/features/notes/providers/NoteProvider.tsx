@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react';
-import { Note } from '../..';
-import * as noteStorage from '../../storage/noteStorage';
+import { Note } from '..';
+import * as noteStorage from '../storage/noteStorage';
 import { getUUID } from '@/utils/getUUID';
 
 export const NoteProvider = ({

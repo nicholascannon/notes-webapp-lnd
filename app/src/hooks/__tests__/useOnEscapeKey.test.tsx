@@ -1,6 +1,6 @@
 import { userEvent } from '@testing-library/user-event';
 import { Mock } from 'vitest';
-import { useOnEscapeKey } from '.';
+import { useOnEscapeKey } from '../useOnEscapeKey';
 import { fireEscapeKeyEvent, fireEvent, render, screen } from '@/utils/testing';
 
 const TestComponent = ({ fn }: { fn: Mock }) => {

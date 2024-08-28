@@ -1,6 +1,6 @@
 import { userEvent } from '@testing-library/user-event';
-import { mockUseNotes } from '../../providers/NoteProvider/test/mockUseNotes';
-import { CompactNote } from '.';
+import { mockUseNotes } from '../../utils/mockUseNotes';
+import { CompactNote } from '../CompactNote';
 import { getUUID } from '@/utils/getUUID';
 import { render, screen } from '@/utils/testing';
 

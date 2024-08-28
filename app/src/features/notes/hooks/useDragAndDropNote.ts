@@ -1,5 +1,5 @@
 import { useDrag, useDrop } from 'react-dnd';
-import { useNotes } from '../..';
+import { useNotes } from '../providers/NoteProvider';
 
 export const useDragAndDropNote = (dropIndex?: number) => {
     const { moveNotes } = useNotes();

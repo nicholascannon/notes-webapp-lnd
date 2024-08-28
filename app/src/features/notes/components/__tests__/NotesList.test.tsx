@@ -1,5 +1,5 @@
 import { userEvent } from '@testing-library/user-event';
-import { NotesList } from '.';
+import { NotesList } from '../NotesList';
 import { mockNavigate } from '@/utils/mocks/navigate';
 import { render, screen } from '@/utils/testing';
 

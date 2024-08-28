@@ -1,5 +1,4 @@
-// can't use barrel import to spy
-import * as NoteProvider from '../NoteProvider';
+import * as NoteProvider from '../providers/NoteProvider';
 
 export const mockUseNotes = () => {
     const addNote = vi.fn();

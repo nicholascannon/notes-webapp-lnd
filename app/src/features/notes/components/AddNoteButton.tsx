@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useNotes } from '../..';
+import { useNotes } from '../providers/NoteProvider';
 import { Button } from '@/components/Button';
 
 export const AddNoteButton = () => {

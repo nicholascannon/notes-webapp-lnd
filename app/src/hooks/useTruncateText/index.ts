@@ -1,1 +1,0 @@
-export { useTruncateText } from './useTruncateText';

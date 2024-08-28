@@ -1,1 +1,0 @@
-export { NoteDetails } from './NoteDetails';

@@ -1,8 +1,6 @@
 import { Note } from '../..';
 import * as storage from '../../storage/noteStorage';
-import { useNotes } from './NoteProvider';
-import { TEST_NOTES_LIST } from './test/testNotes';
-import { NoteProvider } from '.';
+import { NoteProvider, useNotes } from '../NoteProvider';
 import * as utils from '@/utils/getUUID';
 import { UUID_REGEX, act, renderHook } from '@/utils/testing';
 
@@ -167,3 +165,21 @@ describe('<NoteProvider />', () => {
         });
     });
 });
+
+const TEST_NOTES_LIST: Note[] = [
+    {
+        id: '1',
+        lastUpdate: new Date(),
+        text: 'Note 1',
+    },
+    {
+        id: '2',
+        lastUpdate: new Date(),
+        text: 'Note 2',
+    },
+    {
+        id: '3',
+        lastUpdate: new Date(),
+        text: 'Note 3',
+    },
+];

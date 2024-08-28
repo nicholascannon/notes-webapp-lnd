@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Footer } from '../Footer';
+import { Footer } from './Footer';
 import { theme } from '@/theme';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
