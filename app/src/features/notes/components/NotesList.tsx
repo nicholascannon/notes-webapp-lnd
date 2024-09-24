@@ -16,7 +16,7 @@ export const NotesList = ({
     return (
         <AnimatedList enableInitAnimation={enableInitAnimation}>
             {notes.map((note, index) => (
-                <li key={note.id} data-testid="compact-note">
+                <li key={note.id}>
                     <CompactNote
                         note={note}
                         dropIndex={index}

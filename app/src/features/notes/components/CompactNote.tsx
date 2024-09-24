@@ -21,7 +21,7 @@ export const CompactNote = ({
     if (isDragging) return <Container data-testid="drag-container" />;
 
     return (
-        <Container ref={dragRef} onClick={onClick}>
+        <Container ref={dragRef} onClick={onClick} data-testid="compact-note">
             <InvisibleDropZone ref={dropRef} />
 
             <Button

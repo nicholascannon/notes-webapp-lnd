@@ -6,6 +6,7 @@ import { render, screen } from '@/utils/testing';
 
 describe('<CompactNote />', () => {
     const { deleteNote } = mockUseNotes();
+    const onClick = vi.fn();
 
     beforeEach(() => {
         render(
@@ -15,6 +16,7 @@ describe('<CompactNote />', () => {
                     lastUpdate: new Date(),
                     text: 'My note',
                 }}
+                onClick={onClick}
             />,
         );
     });
@@ -26,5 +28,10 @@ describe('<CompactNote />', () => {
     it('should delete note when clicking close button', async () => {
         await userEvent.click(screen.getByTestId('delete-note-button'));
         expect(deleteNote).toHaveBeenCalled();
+    });
+
+    it('should run onClick', async () => {
+        await userEvent.click(screen.getByTestId('compact-note'));
+        expect(onClick).toHaveBeenCalled();
     });
 });
