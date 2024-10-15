@@ -1,4 +1,4 @@
-import { getNotes, saveNotes } from './noteStorage';
+import { getNotes, saveNotes } from '../noteStorage';
 
 describe('noteStorage', () => {
     beforeEach(() => {
