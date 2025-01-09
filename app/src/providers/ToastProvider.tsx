@@ -24,4 +24,4 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
-export const addToast = (message: string) => toast(message);
+export const addToast = toast;
